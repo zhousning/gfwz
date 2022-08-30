@@ -1,0 +1,49 @@
+.nested-fields.mt-2
+  .form-group
+    .field.d-inline
+      .card.border-0.mb-3.rounded-0
+        .card-header.bg-transparent.border-warning
+          %h5
+            = Setting.secds.label
+            %span.text-danger
+            = link_to_remove_association "删除", f, :class => "btn btn-danger btn-sm d-inline pull-right"
+        .card-body
+          %table.w-100.table-bordered.day-pdt-table.ml-2
+            %tbody
+            
+              %tr
+                %td.p-2.text-center
+                  = f.label Setting.secds.name, :class => "text-center"
+                %td.p-2.text-center
+                  = f.text_field :name, :class => "form-control", :required => true 
+                
+              
+                %td.p-2.text-center
+                  = f.label Setting.secds.sequence, :class => "text-center"
+                %td.p-2.text-center
+                  = f.number_field :sequence, :class => "form-control", :required => true 
+                
+              
+              
+            -#
+              %tr
+                %td.p-2.text-center
+                  = f.label Setting.secds.index_page, :class => "text-center"
+                %td.p-2.text-center
+                  .form-check.form-check-inline
+                    = f.radio_button :index_page, Setting.systems.status_en_yes, :class => "form-check-input", :checked => "checked"
+                    = f.label Setting.systems.status_yes, :class => "form-check-label"
+                  .form-check.form-check-inline
+                    = f.radio_button :index_page, Setting.systems.status_en_no, :class => "form-check-input"
+                    = f.label Setting.systems.status_no, :class => "form-check-label"
+                
+                %td.p-2.text-center
+                  = f.label Setting.secds.show_page, :class => "text-center"
+                %td.p-2.text-center
+                  .form-check.form-check-inline
+                    = f.radio_button :show_page, Setting.systems.status_en_yes, :class => "form-check-input", :checked => "checked"
+                    = f.label Setting.systems.status_yes, :class => "form-check-label"
+                  .form-check.form-check-inline
+                    = f.radio_button :show_page, Setting.systems.status_en_no, :class => "form-check-input"
+                    = f.label Setting.systems.status_no, :class => "form-check-label"
+                
