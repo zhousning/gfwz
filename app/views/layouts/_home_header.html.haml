@@ -8,6 +8,9 @@
   .collapse.navbar-collapse.position-relative
     .container.px-0
       %ul#home-header-navbar.navbar-nav.w-100.justify-content-start.px-3
+        %li.nav-item.py-2.show-on-hover
+          %a.nav-link.text-white{:href => root_path}
+            首页
         - Frst.order('sequence').each do |frst|
           %li.nav-item.py-2.show-on-hover
             %a.nav-link.text-white{:href => "javascript:void(0)"}
@@ -20,12 +23,17 @@
                       - if secd.index_page
                         = link_to list_secd_articles_path(idencode(secd.id)) do 
                           = image_tag secd.header_url
-                          %h5
+                          %h5.text-dark
+                            = secd.name
+                      - elsif secd.articles.blank? 
+                        = link_to "javascript:void(0)" do 
+                          = image_tag secd.header_url
+                          %h5.text-dark
                             = secd.name
                       - else
-                        = link_to info_secd_article_path(idencode(secd.id), idencode(Article.first.id)) do 
+                        = link_to info_secd_article_path(idencode(secd.id), idencode(secd.articles.first.id)) do 
                           = image_tag secd.header_url
-                          %h5
+                          %h5.text-dark
                             = secd.name
           -#
             = link_to  frst.name,nil, :class => "nav-link text-white", :id => "navbarScrollingDropdown" + frst.id.to_s, :role => "button", :'data-toggle' => "dropdown", :'aria-expanded' => "false"

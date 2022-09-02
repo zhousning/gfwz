@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   layout "application_control"
-  layout "application_home", :only => [:list, :info]
   before_filter :authenticate_user!
   #authorize_resource
 
@@ -13,12 +12,17 @@ class ArticlesController < ApplicationController
   def list
     @secd = Secd.find(iddecode(params[:secd_id]))
     @frst = @secd.frst
-    @articles = @secd.articles.order('pdt_date DESC')
+    @secds = @frst.secds
+    @articles = @secd.articles.order('pdt_date DESC').page( params[:page]).per( Setting.systems.per_page )
+    render :layout => "application_home"
   end
    
   def info 
     @secd = Secd.find(iddecode(params[:secd_id]))
+    @frst = @secd.frst
+    @secds = @frst.secds
     @article = @secd.articles.find(iddecode(params[:id]))
+    render :layout => "application_home"
   end
 
   def query_all 

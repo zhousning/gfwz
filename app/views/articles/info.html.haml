@@ -1,0 +1,15 @@
+.container.mt-4.py-3
+  .row
+    #sidebar-list.col-12.col-md-3.min-height-info{:style => "background: url('#{@frst.sidebar.blank? ? image_url('sidebar-bg.jpg') : @frst.sidebar_url}') no-repeat;"}
+      %ul.list-group.list-group-flush.pt-3
+        - @secds.each do |secd|
+          = link_to secd.name, list_secd_articles_path(idencode(secd.id)), :class => "list-group-item list-group-item-action"
+
+    #sidebar-content.col-12.col-md-9.bg-white.min-height-900
+      %h5.text-center.mt-3                                                                                         
+        = @article.title                                                                                            
+      %p.text-center                                                                                               
+        %small                                                                                                     
+          = "发布时间: " +  @article.pdt_date.strftime('%Y-%m-%d')                                                
+      %hr                                                                                                          
+      = @article.content.nil? ? '' : @article.content.html_safe       
