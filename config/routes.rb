@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root :to => 'controls#index'
+  #root :to => 'controls#index'
+  root :to => 'home#index'
 
   #mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -99,6 +100,10 @@ Rails.application.routes.draw do
   resources :secds do
     get :download_append, :on => :member
     get :query_all, :on => :collection
+    resources :articles, :only => [] do
+      get :list, :on => :collection
+      get :info, :on => :member
+    end
   end
   resources :articles do
     get :download_attachment, :on => :member

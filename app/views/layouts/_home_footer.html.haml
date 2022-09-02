@@ -1,60 +1,10 @@
-%footer#myFooter
-  .container
-    .row.text-center
-      .col-12.col-sm-6.col-md-3
-        %h1.logo{:style => "margin-top:30px;"}
-          = link_to Setting.systems.company_name
+%footer.text-white.bg-dark.border-top.py-3
+  .container.text-center
+    -#
+      %p.float-right
+      %a{:href => "#"} 回顶部 
+    %p
+      鲁ICP备2021037741号-1 &#xA9; 山东公用水务集团有限公司版权所有 二零二一年
+    %p.mb-0
+      水务惠民生 情系千万家
 
-      .col-12.col-sm-6.col-md-3
-        %h5 开始使用
-        %ul
-          %li
-            = link_to "首页", root_path
-          %li
-            %a{:href => "javascript:void(0)"}
-              = Setting.systems.nav_item2
-              %br/
-          %li
-            %a{:href => "javascript:void(0)"}
-              = Setting.systems.nav_item3
-          %li
-            %a{:href => "javascript:void(0)"}
-              = Setting.systems.nav_item4
-          %li
-            %a{:href => "javascript:void(0)"}
-              = Setting.systems.nav_item4
-      .col-12.col-sm-6.col-md-3.text-left
-        %h5
-          = Setting.contacts.label
-        %ul
-          %li
-            %a{:href => "javascript:void(0)"} 
-              = Setting.contacts.phone
-          %li
-            %a{:href => "javascript:void(0)"}
-              = Setting.contacts.wechat
-              %br/
-          %li
-            %a{:href => "javascript:void(0)"}
-              = Setting.contacts.address
-      .col-sm-6.col-md-3
-        = image_tag "wxqrcode.jpg", :class => "w-50"
-      -#
-        .col-md-3.social-networks
-          %div
-          %a.facebook{:href => "javascript:void(0)"}
-            %i.fa.fa-facebook
-          %a.twitter{:href => "javascript:void(0)"}
-            %i.fa.fa-twitter
-          %a.google{:href => "javascript:void(0)"}
-            %i.fa.fa-google-plus
-          %a.linkedin{:href => "javascript:void(0)"}
-            %i.fa.fa-linkedin
-          %button.btn.btn-primary{:style => "margin-top:20px;", :type => "button"} Contact us
-  .container-fluid
-    .row.footer-copyright
-      .col
-        %p
-          Copyright © 2020
-          All rights reserved by
-          = Setting.systems.company_name

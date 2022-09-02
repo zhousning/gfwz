@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   layout "application_control"
+  layout "application_home", :only => [:list, :info]
   before_filter :authenticate_user!
   #authorize_resource
 
@@ -8,7 +9,17 @@ class ArticlesController < ApplicationController
     @articles = Article.order('pdt_date DESC').all.page( params[:page]).per( Setting.systems.per_page )
    
   end
+
+  def list
+    @secd = Secd.find(iddecode(params[:secd_id]))
+    @frst = @secd.frst
+    @articles = @secd.articles.order('pdt_date DESC')
+  end
    
+  def info 
+    @secd = Secd.find(iddecode(params[:secd_id]))
+    @article = @secd.articles.find(iddecode(params[:id]))
+  end
 
   def query_all 
     items = Article.all

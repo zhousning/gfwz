@@ -1,5 +1,5 @@
 !!!
-%html
+%html.application-html-control
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
@@ -10,7 +10,7 @@
     = csrf_meta_tags
     = include_gon
 
-  %body{:class=>"#{controller_name} #{action_name}"}
+  %body{:class=>"application-control #{controller_name} #{action_name}"}
 
     = render "layouts/control_header"
 

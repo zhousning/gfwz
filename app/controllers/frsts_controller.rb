@@ -78,7 +78,7 @@ class FrstsController < ApplicationController
     @frst = Frst.find(iddecode(params[:id]))
    
     if @frst.update(frst_params)
-      redirect_to frst_path(idencode(@frst.id)) 
+      redirect_to edit_frst_path(idencode(@frst.id)) 
     else
       render :edit
     end
@@ -111,7 +111,7 @@ class FrstsController < ApplicationController
   
   
     def secd_params
-      [:id, :name, :sequence, :index_page, :show_page ,:_destroy]
+      [:id, :name, :sequence, :index_page, :show_page , :header, :_destroy]
     end
   
 end

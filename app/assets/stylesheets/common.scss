@@ -6,14 +6,12 @@
   *vertical-align:middle;
 }
 
-html,body {
-  height: 100%;
-  font-size: 14px;
-}
 th, td {
   font-weight: unset;
 }
-body {
+html.application-html-control, body.application-control {
+  height: 100%;
+  font-size: 14px;
   background: #F1F2FA;
 }
 .bg-ec0303 {
