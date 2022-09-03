@@ -1,6 +1,7 @@
 class Enclosure < ActiveRecord::Base
   mount_uploader :file, EnclosureUploader
 
+  belongs_to :home_setting
 end
 
 

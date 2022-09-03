@@ -9,9 +9,11 @@
             = link_to frsts_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/frst/ =~ request.path).nil? ? '' : 'text-primary'} " do
               = fa_icon "tasks", text: Setting.frsts.label, class: "ml-4 mr-2"  
 
-            = link_to articles_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/frst/ =~ request.path).nil? ? '' : 'text-primary'} " do
+            = link_to articles_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/article/ =~ request.path).nil? ? '' : 'text-primary'} " do
               = fa_icon "tasks", text: Setting.articles.label, class: "ml-4 mr-2"  
-            = link_to carousels_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/frst/ =~ request.path).nil? ? '' : 'text-primary'} " do
+            = link_to carousels_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/carousel/ =~ request.path).nil? ? '' : 'text-primary'} " do
               = fa_icon "tasks", text: Setting.carousels.label, class: "ml-4 mr-2"  
-            = link_to showrooms_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/frst/ =~ request.path).nil? ? '' : 'text-primary'} " do
+            = link_to showrooms_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/showroom/ =~ request.path).nil? ? '' : 'text-primary'} " do
               = fa_icon "tasks", text: Setting.showrooms.label, class: "ml-4 mr-2"  
+            = link_to home_settings_path, :class => "list-group-item list-group-item-action border-0 text-left sidebar-text-font px-0 #{(/home_setting/ =~ request.path).nil? ? '' : 'text-primary'} " do
+              = fa_icon "tasks", text: Setting.home_settings.label, class: "ml-4 mr-2"  

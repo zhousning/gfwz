@@ -7,6 +7,7 @@ class CreateEnclosures < ActiveRecord::Migration
 
       t.references :article
       t.references :carousel
+      t.references :home_setting
     end
   end
 end

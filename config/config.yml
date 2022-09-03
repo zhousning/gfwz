@@ -477,5 +477,11 @@ development:
     label: 企业展厅
     title: 标题
     sequence: 顺序
+  home_settings:
+    label: 首页版块设置
+    diyi: 第一版块
+    dangjian: 党建版块
+    dier: 第二版块
+    disan: 第三版块
 test: 
 production: 

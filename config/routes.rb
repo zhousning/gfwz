@@ -122,6 +122,10 @@ Rails.application.routes.draw do
     get :download_append, :on => :member
     get :query_all, :on => :collection
   end
+  resources :home_settings do
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
   resources :flower
 
 end

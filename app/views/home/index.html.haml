@@ -46,28 +46,88 @@
       .col-md-12
         %p.strong.text-center
           山东公用水务集团有限公司总经理 王宗莉
-
--#
-  %section
+%section
   .container
     .row
-      -#
+      - @diyi.each do |secd|
         .col-sm-6.mb-3
-        .card.rounded-0
-          .card-header.rounded-0.p-2.qijianbox-title
-            通知公告
-            %span.pull-right
-              = link_to '>>', notices_path, :class => 'text-white' 
-          .card-body.px-0.py-1
-            %ul.mb-0.pr-3
-              - @notices.each do |notice|
-                %li.py-1.text-dark
-                  .row
-                    .col-7.col-sm-8.text-truncate
-                      = link_to notice.title, notice_path(notice), :class => "text-body"
-                    .col-5.col-sm-4
-                      %p.text-muted.text-right.font-weight-light.mb-0
-                        = notice.pdt_date.strftime('%Y-%m-%d')
+          .card.rounded-0
+            .card-header.rounded-0.p-2.qijianbox-title
+              = secd[:name]
+              %span.pull-right
+                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
+            .card-body.px-0.py-1
+              %ul.mb-0.pr-3
+                - secd[:articles].each do |article|
+                  %li.py-1.text-primary
+                    .row
+                      .col-7.col-sm-8.text-truncate
+                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                      .col-5.col-sm-4
+                        %p.text-muted.text-right.font-weight-light.mb-0
+                          = article[:pdt_date]
+
+%section
+  .container
+    .row
+      - @dier.each do |secd|
+        .col-sm-6.mb-3
+          .card.rounded-0
+            .card-header.rounded-0.p-2.qijianbox-title
+              = secd[:name]
+              %span.pull-right
+                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
+            .card-body.px-0.py-1
+              %ul.mb-0.pr-3
+                - secd[:articles].each do |article|
+                  %li.py-1.text-dark
+                    .row
+                      .col-7.col-sm-8.text-truncate
+                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                      .col-5.col-sm-4
+                        %p.text-muted.text-right.font-weight-light.mb-0
+                          = article[:pdt_date]
+%section
+  .container
+    .row
+      - @disan.each do |secd|
+        .col-sm-6.mb-3
+          .card.rounded-0
+            .card-header.rounded-0.p-2.qijianbox-title
+              = secd[:name]
+              %span.pull-right
+                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
+            .card-body.px-0.py-1
+              %ul.mb-0.pr-3
+                - secd[:articles].each do |article|
+                  %li.py-1.text-info
+                    .row
+                      .col-7.col-sm-8.text-truncate
+                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                      .col-5.col-sm-4
+                        %p.text-muted.text-right.font-weight-light.mb-0
+                          = article[:pdt_date]
+%section
+  .container
+    .row
+      - @dangjian.each do |secd|
+        .col-sm-6.mb-3
+          .card.rounded-0
+            .card-header.rounded-0.p-2.qijianbox-title
+              = secd[:name]
+              %span.pull-right
+                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
+            .card-body.px-0.py-1
+              %ul.mb-0.pr-3
+                - secd[:articles].each do |article|
+                  %li.py-1.text-danger
+                    .row
+                      .col-7.col-sm-8.text-truncate
+                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                      .col-5.col-sm-4
+                        %p.text-muted.text-right.font-weight-light.mb-0
+                          = article[:pdt_date]
+    -#
       .col-sm-6.mb-3
         -#
           .row.mb-3
@@ -92,58 +152,7 @@
                       .col-2
                         %p.text-muted.font-weight-light.mb-0
                           48.00万
-                          
-      .col-sm-6.mb-3
-        .card.rounded-0
-          .card-header.rounded-0.p-2.qijianbox-title
-            党建工作
-            %span.pull-right
-              = link_to '>>', serv_reports_path, :class => 'text-white' 
-          .card-body.px-0.py-1
-            %ul.mb-0.pr-3
-              - @act_cmpts.each do |org|
-                %li.py-1.text-danger
-                  .row
-                    .col-7.col-sm-8.text-truncate
-                      = link_to org.title, activity_path(org), :class => "text-body"
-                    .col-5.col-sm-4
-                      %p.text-muted.text-right.font-weight-light.mb-0
-                        = org.pdt_date.strftime('%Y-%m-%d')
 
-      .col-sm-6.mb-3
-        .card.rounded-0
-          .card-header.rounded-0.p-2.qijianbox-title
-            = Setting.reports.ctg_serv
-            %span.pull-right
-              = link_to '>>', serv_reports_path, :class => 'text-white' 
-          .card-body.px-0.py-1
-            %ul.mb-0.pr-3
-              - @cmpt_servs.each do |serv|
-                %li.py-1.text-success
-                  .row
-                    .col-7.col-sm-8.text-truncate
-                      = link_to serv.title, report_path(serv), :class => "text-body"
-                    .col-5.col-sm-4
-                      %p.text-muted.text-right.font-weight-light.mb-0
-                        = serv.pdt_date.strftime('%Y-%m-%d')
-
-
-      .col-sm-6.mb-3
-        .card.rounded-0
-          .card-header.rounded-0.p-2.qijianbox-title
-            = Setting.reports.ctg_know
-            %span.pull-right
-              = link_to '>>', know_reports_path, :class => 'text-white' 
-          .card-body.px-0.py-1
-            %ul.mb-0.pr-3
-              - @cmpt_knows.each do |know|
-                %li.py-1.text-info
-                  .row
-                    .col-7.col-sm-8.text-truncate
-                      = link_to know.title, report_path(know), :class => "text-body"
-                    .col-5.col-sm-4
-                      %p.text-muted.text-right.font-weight-light.mb-0
-                        = know.pdt_date.strftime('%Y-%m-%d')
 
 %section.mb-5
   .container
