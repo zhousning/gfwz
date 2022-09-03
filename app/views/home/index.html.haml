@@ -49,14 +49,37 @@
 %section
   .container
     .row
-      - @diyi.each do |secd|
-        .col-sm-6.mb-3
+      - @dier.each do |secd|
+        .col-sm-4.mb-3
           .card.rounded-0
             .card-header.rounded-0.p-2.qijianbox-title
               = secd[:name]
               %span.pull-right
                 = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
-            .card-body.px-0.py-1
+            .card-body.px-0.pt-2.pb-3
+              %ul.mb-0.pr-3
+                - secd[:articles].each do |article|
+                  %li.py-1.text-dark
+                    .row
+                      .col-12.col-sm-12.text-truncate
+                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                      -#
+                        .col-5.col-sm-4
+                        %p.text-muted.text-right.font-weight-light.mb-0
+                          = article[:pdt_date]
+
+%section.diyi-section.py-5.my-5
+  .container
+    .row
+      - @diyi.each do |secd|
+        .col-sm-6.mb-3
+          .card.border-0.rounded-0.shadow.hvr-grow-shadow.d-block.position-relative
+            .card-header.rounded-0.p-2.home-section-title.border-0.mb-3
+              %span.home-section-tag.p-1.qijianbox-title
+                = secd[:name]
+              %span.pull-right
+                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-dark' 
+            .card-body.px-0.pt-2.pb-3
               %ul.mb-0.pr-3
                 - secd[:articles].each do |article|
                   %li.py-1.text-primary
@@ -70,17 +93,22 @@
 %section
   .container
     .row
-      - @dier.each do |secd|
+      .col-12.mb-3
+        = image_tag
+    .row
+      - @dangjian.each do |secd|
         .col-sm-6.mb-3
-          .card.rounded-0
-            .card-header.rounded-0.p-2.qijianbox-title
-              = secd[:name]
+          .card.border-0.rounded-0.shadow.hvr-grow-shadow.d-block.position-relative
+            .card-header.rounded-0.p-2.home-section-title.border-0.mb-3
+              %span.home-section-tag.p-1.home-dang-title
+                = image_tag 'shijiuda.png'
+                = secd[:name]
               %span.pull-right
-                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
-            .card-body.px-0.py-1
+                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-dark' 
+            .card-body.px-0.pt-2.pb-3
               %ul.mb-0.pr-3
                 - secd[:articles].each do |article|
-                  %li.py-1.text-dark
+                  %li.py-1.text-danger
                     .row
                       .col-7.col-sm-8.text-truncate
                         = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
@@ -101,26 +129,6 @@
               %ul.mb-0.pr-3
                 - secd[:articles].each do |article|
                   %li.py-1.text-info
-                    .row
-                      .col-7.col-sm-8.text-truncate
-                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
-                      .col-5.col-sm-4
-                        %p.text-muted.text-right.font-weight-light.mb-0
-                          = article[:pdt_date]
-%section
-  .container
-    .row
-      - @dangjian.each do |secd|
-        .col-sm-6.mb-3
-          .card.rounded-0
-            .card-header.rounded-0.p-2.qijianbox-title
-              = secd[:name]
-              %span.pull-right
-                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
-            .card-body.px-0.py-1
-              %ul.mb-0.pr-3
-                - secd[:articles].each do |article|
-                  %li.py-1.text-danger
                     .row
                       .col-7.col-sm-8.text-truncate
                         = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
@@ -156,6 +164,29 @@
 
 %section.mb-5
   .container
+    .row.mb-3
+      .col-md-12.qijianbox-title.py-3
+        %h3.text-center.font-weight-bold
+          水务担当
+    .row.flex-box.flex-wrap-wrap
+      - if !@showrooms.blank?
+        - @showrooms.each do |room|
+          .col-sm-3.flex-box.flex-justify-center.flex-align-center
+            = link_to room.photo_url, :class => 'fancybox' do
+              = image_tag room.photo_url, :class => "img-fluid"
+
+-#
+  %section.mb-5
+  .container
+    .row
+      .col-md-12.qijianbox-title.py-3.mb-3
+        %h3.text-center.font-weight-bold
+          水务服务
+      .col-md-12
+        = image_tag 'members.png', :class => "img-fluid"
+
+%section.diyi-section.py-5.mt-5
+  .container
     .row
       .col-md-12
         .accordian
@@ -185,31 +216,3 @@
                 %a.image_title{:href => "#"} 
               %a{:href => "#"}
                 = image_tag 'accor3.jpg' 
-          -#
-            %li
-              -#
-                %a.image_title{:href => "#"}
-              %a{:href => "#"}
-                = image_tag 'accor5.jpg' 
-
-%section.mb-5
-  .container
-    .row.mb-3
-      .col-md-12.qijianbox-title.py-3
-        %h3.text-center.font-weight-bold
-          水务担当
-    .row.flex-box.flex-wrap-wrap
-      - if !@showrooms.blank?
-        - @showrooms.each do |room|
-          .col-sm-3.flex-box.flex-justify-center.flex-align-center
-            = link_to room.photo_url, :class => 'fancybox' do
-              = image_tag room.photo_url, :class => "img-fluid"
-
-%section.mb-5
-  .container
-    .row
-      .col-md-12.qijianbox-title.py-3.mb-3
-        %h3.text-center.font-weight-bold
-          水务服务
-      .col-md-12
-        = image_tag 'members.png', :class => "img-fluid"
