@@ -29,6 +29,14 @@ module DayPdtRptsHelper
     raw(str)
   end
 
+  def options_for_wxtool_secds
+    arr = []
+    Secd.all.each do |secd|
+      arr << [secd.name, secd.id]
+    end
+    arr
+  end
+
   def options_for_factories
     str = ""
     Factory.all.each do |f|

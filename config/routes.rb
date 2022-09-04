@@ -36,6 +36,10 @@ Rails.application.routes.draw do
 
   resources :roles
 
+  resources :spiders do
+    get :start, :on => :member
+  end
+
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
@@ -123,6 +127,11 @@ Rails.application.routes.draw do
     get :query_all, :on => :collection
   end
   resources :home_settings do
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
+  resources :wxtools do
+    get :start, :on => :collection
     get :download_append, :on => :member
     get :query_all, :on => :collection
   end

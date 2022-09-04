@@ -9,7 +9,7 @@ require 'yaml'
 require 'fileutils'
 require 'base64'
 
-class SpiderTool
+class WxarticleTool
   MAX_RETRY_TIMES = 5
 
   def initialize
@@ -17,9 +17,9 @@ class SpiderTool
     Dir::mkdir(spider_dir) unless File.directory?(spider_dir)
 
     @root_dir = spider_dir
-    @download_error = Logger.new( @root_dir + '/download_error.log')
-    @no_doc = Logger.new( @root_dir + '/nodoc_error.log')
-    @parse_error = Logger.new( @root_dir + '/parse_error.log')
+    @download_error = Logger.new( @root_dir + '/wxarticle_download_error.log')
+    @no_doc = Logger.new( @root_dir + '/wxarticle_nodoc_error.log')
+    @parse_error = Logger.new( @root_dir + '/wxarticle_parse_error.log')
   end
 
   def process(spider)
@@ -28,7 +28,6 @@ class SpiderTool
     @doc_parse = @spider.doc_parse
     @result = []
     @file_result = []
-    result_hash = Hash.new 
     spider_link = @spider.link
     
     unless @spider.page.blank?
@@ -38,6 +37,7 @@ class SpiderTool
       pages = Array(page_arr[0]..page_arr[1])
       pages.each_with_index do |i, index|
         link = spider_link + i.to_s
+        puts link
 
         doc = get_doc(@spider, link)
         if doc.nil?
@@ -47,8 +47,7 @@ class SpiderTool
   
         save_doc(link, doc, i) if @doc_save
 
-        result_hash = parse(@spider, doc) if @doc_parse
-    
+        parse(@spider, doc) if @doc_parse
 
         sleep rand(10..20) 
       end
@@ -58,17 +57,16 @@ class SpiderTool
         @no_doc.error spider_link
       else
         save_doc(spider_link, doc, "源网页") if @doc_save
-        result_hash = parse(@spider, doc) if @doc_parse
+        parse(@spider, doc) if @doc_parse
       end
     end
-    result_hash
   end
 
   def parse(spider, doc)
     @selectors = spider.selectors
-    result_hash = Hash.new 
     @selectors.each do |s|
       nodes = doc.css(s.name)
+      puts nodes[0]
 
       if nodes.blank?
         next
@@ -82,8 +80,6 @@ class SpiderTool
         nodes.each do |node|
           @result << node[s.title]
         end
-      elsif s.category == Setting.selectors.categories.html.value
-        @result << nodes[0].to_s
       else
         if nodes[0].name == "img" 
           nodes.each do |node|
@@ -93,14 +89,10 @@ class SpiderTool
         else
         end
       end
-      result_hash[s.name + '$' + s.title] = @result
-      if s.file
-        @target = File.join(Rails.root, "public", "spider", s.title) 
-        File.open(@target + ".yml",'a+'){|f| YAML.dump(@result, f)}
-      end
+      @target = File.join(Rails.root, "public", "spider", s.title) 
+      File.open(@target + ".yml",'a+'){|f| YAML.dump(@result, f)}
       @result = []
     end
-    result_hash
   end
   
   def get_doc(spider, search_link)
@@ -116,14 +108,17 @@ class SpiderTool
       #todo solve follow_redirect can not in rails 
       #RestClient.get(search_link) do |response|
       #  #doc = Nokogiri::HTML(response.follow_redirection) 
+      #  puts doc
       #end
       #doc = Nokogiri::HTML
       
       #doc = open(search_link, { 
       doc_res = RestClient.get(search_link, { 
           "User-Agent" => @agent,
+          "authority" => "g.tianehui.cn",
           "accept" => "application/json, text/plain, */*",
           "content-type" => "application/json",
+          "ticket" => "9887bbd5-be40-46f8-9705-aa65afe6bc08"
           #"accept-encoding" =>  "gzip, deflate, br",
           #"accept-language" => "en-US,en;q=0.9"
         }
@@ -149,6 +144,7 @@ class SpiderTool
     rescue Exception => e   
       img = image 
       @download_error.error "download file error: #{image}"
+      puts "download file  " + e.message
     end
     return img
   end
@@ -159,6 +155,7 @@ class SpiderTool
   end
 
   def save_doc(link, doc, i)
+    puts doc
     #name = Time.now.to_i.to_s + "%04d" % [rand(10000)] + ".txt"
     name = i.to_s + ".txt"
     file = File.join(Rails.root, "public", "spider", name) 

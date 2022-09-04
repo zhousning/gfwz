@@ -96,6 +96,9 @@ mysetting:
       img:
         info: 图片
         value: '2'
+      html:
+        info: html
+        value: '3'
 defaults:
   admins: &10
     class_name: all
@@ -483,5 +486,11 @@ development:
     dangjian: 党建版块
     dier: 第二版块
     disan: 第三版块
+  wxtools:
+    label: 公众号工具
+    name: 名称
+    link: 链接地址
+    secd_id: 二级类目
+    desc: 备用
 test: 
 production: 
