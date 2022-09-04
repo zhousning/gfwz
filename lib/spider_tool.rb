@@ -50,7 +50,6 @@ class SpiderTool
         result_hash = parse(@spider, doc) if @doc_parse
     
 
-        sleep rand(10..20) 
       end
     else
       doc = get_doc(@spider, spider_link)
@@ -84,13 +83,10 @@ class SpiderTool
         end
       elsif s.category == Setting.selectors.categories.html.value
         @result << nodes[0].to_s
-      else
-        if nodes[0].name == "img" 
-          nodes.each do |node|
-            file_name = download_file(node['src'])
-            @result << file_name
-          end
-        else
+      elsif s.category == Setting.selectors.categories.img.value
+        nodes.each do |node|
+          file_name = download_file(node[s.title])
+          @result << file_name
         end
       end
       result_hash[s.name + '$' + s.title] = @result
@@ -104,6 +100,7 @@ class SpiderTool
   end
   
   def get_doc(spider, search_link)
+    sleep rand(10..20) 
     retry_times = 0
     doc = nil
 
@@ -138,19 +135,26 @@ class SpiderTool
     return doc
   end
   
+  #此处为了下载公众号文章把获取后缀给去掉了,因为公众号文章图片不知道什么格式
   def download_file(image)
+    sleep rand(10..20) 
     begin
       name = Time.now.to_i.to_s + "%04d" % [rand(10000)]
-      suffix = image.sub(/.+\./, '')
-      img = name + "." + suffix
-      File.open("#{@root_dir}/#{img}", "w") do |f|
+      img = name
+      #suffix = image.sub(/.+\./, '')
+      #img = name + "." + suffix
+
+      img_dir = File.join(Rails.root, "public", "spider", Date.today.to_s)
+      Dir::mkdir(img_dir) unless File.directory?(img_dir)
+
+      File.open("#{img_dir}/#{img}", "w") do |f|
         f.write(open("#{image}").read.force_encoding('utf-8'))
       end
     rescue Exception => e   
       img = image 
-      @download_error.error "download file error: #{image}"
+      @download_error.error "download file error: #{image}  " + e.message
     end
-    return img
+    return "/spider/" + Date.today.to_s + "/" + img 
   end
   
   def img_base64(image_src)

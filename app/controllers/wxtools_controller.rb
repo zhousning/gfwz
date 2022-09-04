@@ -11,34 +11,6 @@ class WxtoolsController < ApplicationController
    
   end
 
-  def start 
-    Wxtool.all.each do |wxtool|
-      @secd = Secd.find(wxtool.secd_id)
-      link = wxtool.link
-
-      @first_spider = Spider.first
-      @second_spider = Spider.second
-      @first_spider.link = link
-      spider_tool = SpiderTool.new
-      first_result = spider_tool.process(@first_spider) 
-
-      @first_selector = @first_spider.selectors.first
-      @second_selectors = @second_spider.selectors
-
-      first_result[@first_selector.name + '$' + @first_selector.title].each do |link|
-        @second_spider.link = link
-        second_result = spider_tool.process(@second_spider) 
-        title = second_result[@second_selectors[0].name + '$' + @second_selectors[0].title][0].strip
-        content = second_result[@second_selectors[1].name + '$' + @second_selectors[1].title][0].strip
-        puts title + '  ' + content
-        content.gsub!("visibility: hidden;", '')
-        Article.create!(:title => title, :pdt_date => Date.today, :content => content, :secd => @secd)
-      end
-    end
-    redirect_to articles_path 
-  end
-   
-   
 
   def query_all 
     items = Wxtool.all

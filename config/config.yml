@@ -484,7 +484,7 @@ development:
     label: 首页版块设置
     diyi: 第一版块
     dangjian: 党建版块
-    dier: 第二版块
+    dier: 通知公告版块
     disan: 第三版块
   wxtools:
     label: 公众号工具
