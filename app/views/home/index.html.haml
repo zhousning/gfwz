@@ -70,9 +70,12 @@
 
 %section.diyi-section.py-5.my-5
   .container
+    .row.mb-5
+      .col-sm-12
+        = image_tag 'biaoyu.png', :class => 'img-fluid'
     .row
       - @diyi.each do |secd|
-        .col-sm-6.mb-3
+        .col-sm-6.mb-5
           .card.border-0.rounded-0.shadow.hvr-grow-shadow.d-block.position-relative
             .card-header.rounded-0.p-2.home-section-title.border-0.mb-3
               %span.home-section-tag.p-1.qijianbox-title
@@ -90,20 +93,18 @@
                         %p.text-muted.text-right.font-weight-light.mb-0
                           = article[:pdt_date]
 
-%section
+%section.mb-5
   .container
-    .row
-      .col-12.mb-3
-        = image_tag ''
-    .row
-      - @dangjian.each do |secd|
-        .col-sm-6.mb-3
-          .card.border-0.rounded-0.shadow.hvr-grow-shadow.d-block.position-relative
+    - @dangjian.each do |secd|
+      .row
+        .col-sm-9.mb-3
+          .card.border-0.rounded-0.shadow.d-block.position-relative
             .card-header.rounded-0.p-2.home-section-title.border-0.mb-3
               %span.home-section-tag.p-1.home-dang-title
                 = image_tag 'shijiuda.png'
                 = secd[:name]
-              %span.pull-right
+              -#
+                %span.pull-right
                 = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-dark' 
             .card-body.px-0.pt-2.pb-3
               %ul.mb-0.pr-3
@@ -115,6 +116,15 @@
                       .col-5.col-sm-4
                         %p.text-muted.text-right.font-weight-light.mb-0
                           = article[:pdt_date]
+        .col-sm-3
+          .col-sm-12.p-1.shadow
+            = image_tag 'dangde.png', :class => 'img-fluid'
+          .col-sm-12.mt-2.bg-white.shadow.hvr-grow-shadow
+            = link_to list_secd_articles_path(idencode(secd[:id])), :class => 'text-dark d-flex align-items-center justify-content-between p-3 text-decoration-none' do 
+              %span.home-view-more-title
+                浏览更多
+              = fa_icon "arrow-circle-o-right", :class => "home-view-more"
+
 %section
   .container
     .row
