@@ -135,6 +135,26 @@ Rails.application.routes.draw do
     get :download_append, :on => :member
     get :query_all, :on => :collection
   end
+  resources :home_indices do
+    get :download_attachment, :on => :member
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
+  resources :home_indices do
+    get :download_attachment, :on => :member
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
+  resources :home_contents do
+    get :download_attachment, :on => :member
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
+  resources :home_contents do
+    get :download_attachment, :on => :member
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
   resources :flower
 
 end

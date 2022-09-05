@@ -75,3 +75,4 @@ user.factories << all_factories
 #集团管理
 grp_mgn = User.create!(:phone => "05376688", :password => "swjt0537", :password_confirmation => "swjt0537", :name => "水务集团管理者", :roles => @grp_mgn, :factories => all_factories)
 
+HomeContent.create

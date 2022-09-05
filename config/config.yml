@@ -492,5 +492,12 @@ development:
     link: 链接地址
     secd_id: 二级类目
     desc: 备用
+  home_contents:
+    label: 首页内容
+    dtevent: 灯塔头条
+    dtlink: 灯塔头条链接
+    video_title: 视频标题
+    desc1: 备用1
+    desc2: 备用2
 test: 
 production: 

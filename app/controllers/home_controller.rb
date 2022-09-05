@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     @showrooms = Showroom.all
     @home_setting = HomeSetting.last
     @diyi, @dangjian, @dier, @disan = [], [], [], []
+    @home_content = HomeContent.first
 
     if @home_setting
       @diyi = get_sections(@home_setting.diyi) 

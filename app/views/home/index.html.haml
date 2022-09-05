@@ -29,8 +29,8 @@
             .container
               .col-md-12.header-title
                 %h4.text-center{:style => "line-height:45px;color:#F94500;"}
-                  %a.font-weight-bold{:target => "_blank", :href => "https://www.xuexi.cn/lgpage/detail/index.html?id=11870838211269681045&amp;item_id=11870838211269681045"}
-                    《求是》杂志发表习近平总书记重要文章《在庆祝中国人民解放军建军90周年大会上的讲话》
+                  %a.font-weight-bold{:target => "_blank", :href => "#{@home_content.dtlink}"}
+                    = @home_content.dtevent
   -#
     .row
       .col-md-12
@@ -38,15 +38,16 @@
           "水务惠民生 情系千万家"
         %hr
 
-%section.mb-5
-  .container
-    .row
-      .col-md-8.offset-2
-        = video_tag 'leaderspeak.mp4', :width => '100%', :controls => 'controls'
+- unless @home_content.video.blank?
+  %section.mb-5
+    .container
+      .row
+        .col-md-8.offset-2
+          = video_tag @home_content.video_url, :width => '100%', :controls => 'controls'
     .row
       .col-md-12
         %p.strong.text-center
-          山东公用水务集团有限公司总经理 王宗莉
+          = @home_content.video_title
 %section
   .container
     .row
@@ -210,24 +211,16 @@
               -#
                 %a.image_title{:href => "#"} 
               %a{:href => "#"}
-                = image_tag 'accor0.png' 
+                = image_tag @home_content.by1_url 
             %li
-              -#
-                %a.image_title{:href => "#"} 
               %a{:href => "#"}
-                = image_tag 'accor0.jpg' 
+                = image_tag @home_content.by2_url
             %li
-              -#
-                %a.image_title{:href => "#"}
               %a{:href => "#"}
-                = image_tag 'accor1.jpg' 
+                = image_tag @home_content.by3_url
             %li
-              -#
-                %a.image_title{:href => "#"}
               %a{:href => "#"}
-                = image_tag 'accor2.jpg' 
+                = image_tag @home_content.by4_url
             %li
-              -#
-                %a.image_title{:href => "#"} 
               %a{:href => "#"}
-                = image_tag 'accor3.jpg' 
+                = image_tag @home_content.by5_url
