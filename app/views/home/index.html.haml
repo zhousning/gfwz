@@ -31,6 +31,7 @@
                 %h4.text-center{:style => "line-height:45px;color:#F94500;"}
                   %a.font-weight-bold{:target => "_blank", :href => "https://www.xuexi.cn/lgpage/detail/index.html?id=11870838211269681045&amp;item_id=11870838211269681045"}
                     《求是》杂志发表习近平总书记重要文章《在庆祝中国人民解放军建军90周年大会上的讲话》
+  -#
     .row
       .col-md-12
         %h3.my-5.text-center{:style => "color:#F94500;"}
@@ -174,10 +175,14 @@
 
 %section.mb-5
   .container
-    .row.mb-3
+    -#
+      .row.mb-3
       .col-md-12.qijianbox-title.py-3
         %h3.text-center.font-weight-bold
           水务担当
+    .row.mb-5
+      .col-sm-12
+        = image_tag 'shuiwudandang.png', :class => 'img-fluid'
     .row.flex-box.flex-wrap-wrap
       - if !@showrooms.blank?
         - @showrooms.each do |room|
