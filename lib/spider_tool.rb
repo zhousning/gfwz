@@ -42,7 +42,7 @@ class SpiderTool
       end
       pages = Array(page_arr[0]..page_arr[1])
       pages.each_with_index do |i, index|
-        link = spider_link + i.to_s
+        link = spider_link + i.to_s + '.html'
 
         doc = get_doc(@spider, link)
         if doc.nil?

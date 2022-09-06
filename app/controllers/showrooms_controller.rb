@@ -1,7 +1,7 @@
 class ShowroomsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
@@ -13,17 +13,8 @@ class ShowroomsController < ApplicationController
 
 
    
-  def show
-   
-    @showroom = Showroom.find(iddecode(params[:id]))
-   
-  end
-   
-
-   
   def new
     @showroom = Showroom.new
-    
   end
    
 

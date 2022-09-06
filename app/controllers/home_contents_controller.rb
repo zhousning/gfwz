@@ -4,40 +4,11 @@ class HomeContentsController < ApplicationController
   #authorize_resource
 
    
-  def index
-    #@home_content = HomeContent.new
+  #def index
+  #  @home_contents = HomeContent.all.page( params[:page]).per( Setting.systems.per_page )
+  # 
+  #end
    
-    @home_contents = HomeContent.all.page( params[:page]).per( Setting.systems.per_page )
-   
-  end
-   
-
-  def query_all 
-    items = HomeContent.all
-   
-    obj = []
-    items.each do |item|
-      obj << {
-        #:factory => idencode(factory.id),
-        :id => idencode(item.id),
-       
-        :dtevent => item.dtevent,
-       
-        :dtlink => item.dtlink,
-       
-        :desc1 => item.desc1,
-       
-        :desc2 => item.desc2
-      
-      }
-    end
-    respond_to do |f|
-      f.json{ render :json => obj.to_json}
-    end
-  end
-
-
-
    
   #def show
   # 
@@ -97,33 +68,30 @@ class HomeContentsController < ApplicationController
    
 
   
-    def download_attachment 
-     
-      @home_content = HomeContent.find(iddecode(params[:id]))
-     
-      @attachment_id = params[:number].to_i
-      @attachment = @home_content.attachments[@attachment_id]
+  #def download_attachment 
+  # 
+  #  @home_content = HomeContent.find(iddecode(params[:id]))
+  # 
+  #  @attachment_id = params[:number].to_i
+  #  @attachment = @home_content.attachments[@attachment_id]
 
-      if @attachment
-        send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
+  #  if @attachment
+  #    send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
+  #  end
+  #end
+  #
 
-  
-    def download_append
-     
-      @home_content = HomeContent.find(iddecode(params[:id]))
-     
-      @video = @home_content.video_url
+  #
+  #def download_append
+  # 
+  #  @home_content = HomeContent.find(iddecode(params[:id]))
+  # 
+  #  @video = @home_content.video_url
 
-      if @video
-        send_file File.join(Rails.root, "public", URI.decode(@video)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-
-  
+  #  if @video
+  #    send_file File.join(Rails.root, "public", URI.decode(@video)), :type => "application/force-download", :x_sendfile=>true
+  #  end
+  #end
   
   
 

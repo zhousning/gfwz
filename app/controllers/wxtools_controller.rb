@@ -1,58 +1,16 @@
 class WxtoolsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
-
+  authorize_resource
    
   def index
     @wxtool = Wxtool.new
-   
     @wxtools = Wxtool.all.page( params[:page]).per( Setting.systems.per_page )
-   
   end
 
-
-  def query_all 
-    items = Wxtool.all
-   
-    obj = []
-    items.each do |item|
-      obj << {
-        #:factory => idencode(factory.id),
-        :id => idencode(item.id),
-       
-        :name => item.name,
-       
-        :link => item.link,
-       
-        :secd_id => item.secd_id,
-       
-        :desc => item.desc
-      
-      }
-    end
-    respond_to do |f|
-      f.json{ render :json => obj.to_json}
-    end
-  end
-
-
-
-   
-  def show
-   
-    @wxtool = Wxtool.find(iddecode(params[:id]))
-   
-  end
-   
-
-   
   def new
     @wxtool = Wxtool.new
-    
   end
-   
-
    
   def create
     @wxtool = Wxtool.new(wxtool_params)
@@ -64,18 +22,11 @@ class WxtoolsController < ApplicationController
     end
   end
    
-
-   
   def edit
-   
     @wxtool = Wxtool.find(iddecode(params[:id]))
-   
   end
    
-
-   
   def update
-   
     @wxtool = Wxtool.find(iddecode(params[:id]))
    
     if @wxtool.update(wxtool_params)
@@ -85,24 +36,13 @@ class WxtoolsController < ApplicationController
     end
   end
    
-
-   
   def destroy
-   
     @wxtool = Wxtool.find(iddecode(params[:id]))
    
     @wxtool.destroy
     redirect_to :action => :index
   end
    
-
-  
-
-  
-
-  
-  
-  
 
   private
     def wxtool_params

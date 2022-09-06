@@ -1,13 +1,55 @@
 class ArticlesController < ApplicationController
   layout "application_control"
-  before_filter :authenticate_user!
-  #authorize_resource
+  before_filter :authenticate_user!, :except =>[:list, :info, :download_attachment]
+  authorize_resource :except =>[:list, :info, :download_attachment]
 
    
   def index
     @articles = Article.order('pdt_date DESC').all.page( params[:page]).per( Setting.systems.per_page )
-   
   end
+
+  def show
+    @article = Article.find(iddecode(params[:id]))
+  end
+   
+  def new
+    @article = Article.new
+  end
+   
+  def create
+    @secd = Secd.find(iddecode(params[:device]))
+    @article = Article.new(article_params)
+    @article.secd = @secd
+     
+    if @article.save
+      redirect_to edit_article_path(idencode(@article.id)) 
+    else
+      render :new
+    end
+  end
+   
+  def edit
+    @article = Article.find(iddecode(params[:id]))
+  end
+   
+  def update
+    @secd = Secd.find(iddecode(params[:device]))
+    @article = Article.find(iddecode(params[:id]))
+    @article.secd = @secd
+   
+    if @article.update(article_params)
+      redirect_to edit_article_path(idencode(@article.id)) 
+    else
+      render :edit
+    end
+  end
+   
+  def destroy
+    @article = Article.find(iddecode(params[:id]))
+    @article.destroy
+    redirect_to :action => :index
+  end
+   
 
   def list
     @secd = Secd.find(iddecode(params[:secd_id]))
@@ -25,108 +67,15 @@ class ArticlesController < ApplicationController
     render :layout => "application_home"
   end
 
-  def query_all 
-    items = Article.all
-   
-    obj = []
-    items.each do |item|
-      obj << {
-        #:factory => idencode(factory.id),
-        :id => idencode(item.id),
-       
-        :title => item.title,
-       
-        :pdt_date => item.pdt_date,
-       
-        :content => item.content
-      
-      }
-    end
-    respond_to do |f|
-      f.json{ render :json => obj.to_json}
-    end
-  end
-
-
-
-   
-  def show
-   
+  def download_attachment 
     @article = Article.find(iddecode(params[:id]))
-   
-  end
-   
+    @attachment_id = params[:number].to_i
+    @attachment = @article.attachments[@attachment_id]
 
-   
-  def new
-    @article = Article.new
-    
-  end
-   
-
-   
-  def create
-    @secd = Secd.find(iddecode(params[:device]))
-    @article = Article.new(article_params)
-    @article.secd = @secd
-     
-    if @article.save
-      redirect_to edit_article_path(idencode(@article.id)) 
-    else
-      render :new
+    if @attachment
+      send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
     end
   end
-   
-
-   
-  def edit
-   
-    @article = Article.find(iddecode(params[:id]))
-   
-  end
-   
-
-   
-  def update
-    @secd = Secd.find(iddecode(params[:device]))
-    @article = Article.find(iddecode(params[:id]))
-    @article.secd = @secd
-   
-    if @article.update(article_params)
-      redirect_to edit_article_path(idencode(@article.id)) 
-    else
-      render :edit
-    end
-  end
-   
-
-   
-  def destroy
-   
-    @article = Article.find(iddecode(params[:id]))
-   
-    @article.destroy
-    redirect_to :action => :index
-  end
-   
-
-  
-    def download_attachment 
-     
-      @article = Article.find(iddecode(params[:id]))
-     
-      @attachment_id = params[:number].to_i
-      @attachment = @article.attachments[@attachment_id]
-
-      if @attachment
-        send_file File.join(Rails.root, "public", URI.decode(@attachment.file_url)), :type => "application/force-download", :x_sendfile=>true
-      end
-    end
-  
-
-  
-
-  
   
   
 

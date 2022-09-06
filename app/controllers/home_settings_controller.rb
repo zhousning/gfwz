@@ -1,51 +1,14 @@
 class HomeSettingsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
-    #@home_setting = HomeSetting.new
-   
     @home_settings = HomeSetting.all.page( params[:page]).per( Setting.systems.per_page )
    
   end
    
-
-  def query_all 
-    items = HomeSetting.all
-   
-    obj = []
-    items.each do |item|
-      obj << {
-        #:factory => idencode(factory.id),
-        :id => idencode(item.id),
-       
-        :diyi => item.diyi,
-       
-        :dangjian => item.dangjian,
-       
-        :dier => item.dier,
-       
-        :disan => item.disan
-      
-      }
-    end
-    respond_to do |f|
-      f.json{ render :json => obj.to_json}
-    end
-  end
-
-
-
-   
-  def show
-   
-    @home_setting = HomeSetting.find(iddecode(params[:id]))
-   
-  end
-   
-
    
   def new
     @secds = Secd.all
@@ -99,13 +62,6 @@ class HomeSettingsController < ApplicationController
    
 
   
-
-  
-
-  
-  
-  
-
   private
     def home_setting_params
       params.require(:home_setting).permit( :diyi, :dangjian, :dier, :disan , :logo , :avatar , :photo , enclosures_attributes: enclosure_params)

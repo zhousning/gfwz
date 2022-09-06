@@ -5,10 +5,59 @@
 - 
   role_name: 集团用户
   level: 1
-#- 
-#  role_name: 厂区-施工站点
-#  level: 1
-#  permissions: 
-#    -
-#      controller: devices_controller
-#      actions: [index, new, create, edit, update, show, uphold, destroy, xls_download, parse_excel, query_all]
+- 
+  role_name: 文章管理
+  level: 1
+  permissions: 
+    -
+      controller: articles_controller
+      actions: [index, show, new, create, edit, update, destroy]
+- 
+  role_name: 走马灯管理
+  level: 1
+  permissions: 
+    -
+      controller: carousels_controller
+      actions: [index, show, new, create, edit, update, destroy]
+- 
+  role_name: 企业展厅 
+  level: 1
+  permissions: 
+    -
+      controller: showrooms_controller
+      actions: [index, new, create, edit, update, destroy]
+- 
+  role_name: 首页内容 
+  level: 1
+  permissions: 
+    -
+      controller: home_contents_controller
+      actions: [edit, update]
+- 
+  role_name: 类目管理 
+  level: 1
+  permissions: 
+    -
+      controller: frsts_controller
+      actions: [index, query_device, new, create, edit, update, destroy]
+- 
+  role_name: 版块配置 
+  level: 1
+  permissions: 
+    -
+      controller: home_settings_controller
+      actions: [index, new, create, edit, update, destroy]
+- 
+  role_name: 爬虫配置 
+  level: 1
+  permissions: 
+    -
+      controller: spiders_controller
+      actions: [start, index, new, create, edit, update, destroy]
+- 
+  role_name: 公众号工具 
+  level: 1
+  permissions: 
+    -
+      controller: wxtools_controller
+      actions: [index, new, create, edit, update, destroy]

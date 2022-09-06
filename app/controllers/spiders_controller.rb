@@ -3,8 +3,8 @@ load "spider_tool.rb"
 
 class SpidersController < ApplicationController
   layout "application_control"
-  #before_filter :authenticate_user!
-  #load_and_authorize_resource
+  before_filter :authenticate_user!
+  authorize_resource
 
 
   def start 
@@ -18,13 +18,6 @@ class SpidersController < ApplicationController
     @spiders = Spider.all
   end
    
-
-   
-  def show
-    @spider = Spider.find(params[:id])
-  end
-   
-
    
   def new
     @spider = Spider.new

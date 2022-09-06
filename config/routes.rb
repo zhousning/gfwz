@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root :to => 'home#index'
 
   #mount Ckeditor::Engine => '/ckeditor'
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  
+  #devise_for :admin_users, ActiveAdmin::Devise.config
+  #ActiveAdmin.routes(self)
+  
   #get 'forget', to: 'admin/dashboard#index'
   #devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   devise_for :users, controllers: { sessions: 'users/sessions' }
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
   #end
 
 
-  resources :roles
+  #resources :roles
 
   resources :spiders do
     get :start, :on => :member
@@ -44,66 +46,20 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :properties
-  resources :nests 
-  resources :domains 
+  #模板
+  #resources :properties
+  #resources :nests 
+  #resources :domains 
 
-  #resources :controls, :only => [:index]
+  #resources :templates do
+  #  get :produce, :on => :member
+  #end
 
-  resources :templates do
-    get :produce, :on => :member
-  end
-
-  resources :wx_templates do
-    get :produce, :on => :member
-  end
-
-  resources :selectors
-
-  resources :factories, :only => [] do
-  end
-
-
-  resources :wx_users, only: [:update] do
-    collection do
-      post 'get_userid'
-      get 'fcts'
-      get 'areas'
-      get 'streets'
-      get 'sites'
-      get 'status'
-      post 'set_fct'
-    end
-  end
-  resources :wx_tasks, only: [] do
-    collection do
-      get 'query_all'
-      get 'query_finish'
-      get 'query_plan'
-      get 'basic_card'
-      get 'task_info'
-      post 'report_create'
-    end
-  end
-  resources :wx_resources, only: [] do
-    collection do
-      post 'img_upload'
-    end
-  end
-  resources :wx_auths, only: [] do
-    collection do
-      post 'auth_process'
-    end
-  end
-
-  resources :frsts do
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
+  resources :frsts, :except => [:show] do
     get :query_device, :on => :collection
   end
-  resources :secds do
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
+
+  resources :secds, :only => [] do
     resources :articles, :only => [] do
       get :list, :on => :collection
       get :info, :on => :member
@@ -111,50 +67,14 @@ Rails.application.routes.draw do
   end
   resources :articles do
     get :download_attachment, :on => :member
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
   end
-  resources :carousels do
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :carousels do
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :showrooms do
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :home_settings do
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :wxtools do
-    get :start, :on => :collection
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :home_indices do
-    get :download_attachment, :on => :member
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :home_indices do
-    get :download_attachment, :on => :member
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :home_contents do
-    get :download_attachment, :on => :member
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
-  resources :home_contents do
-    get :download_attachment, :on => :member
-    get :download_append, :on => :member
-    get :query_all, :on => :collection
-  end
+
+  resources :carousels, :except => [:show]
+  resources :showrooms, :except => [:show]  
+  resources :home_settings, :except => [:show] 
+  resources :wxtools, :except => [:show]   
+  resources :home_contents, :only => [:edit, :update] 
+
   resources :flower
 
 end

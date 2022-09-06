@@ -1,13 +1,11 @@
 class FrstsController < ApplicationController
   layout "application_control"
   before_filter :authenticate_user!
-  #authorize_resource
+  authorize_resource
 
    
   def index
-   
     @frsts = Frst.all.page( params[:page]).per( Setting.systems.per_page )
-   
   end
    
   def query_device
@@ -36,22 +34,14 @@ class FrstsController < ApplicationController
   end
 
    
-  def show
-   
-    @frst = Frst.find(iddecode(params[:id]))
-   
-  end
-   
-
+  #def show
+  #  @frst = Frst.find(iddecode(params[:id]))
+  #end
    
   def new
     @frst = Frst.new
-    
     @frst.secds.build
-    
   end
-   
-
    
   def create
     @frst = Frst.new(frst_params)
@@ -63,18 +53,11 @@ class FrstsController < ApplicationController
     end
   end
    
-
-   
   def edit
-   
     @frst = Frst.find(iddecode(params[:id]))
-   
   end
    
-
-   
   def update
-   
     @frst = Frst.find(iddecode(params[:id]))
    
     if @frst.update(frst_params)
@@ -84,24 +67,13 @@ class FrstsController < ApplicationController
     end
   end
    
-
-   
   def destroy
-   
     @frst = Frst.find(iddecode(params[:id]))
    
     @frst.destroy
     redirect_to :action => :index
   end
    
-
-  
-
-  
-
-  
-  
-  
 
   private
     def frst_params
