@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => '/mysbcnmsidekiq'
 
   #模板
   #resources :properties
@@ -75,6 +75,6 @@ Rails.application.routes.draw do
   resources :wxtools, :except => [:show]   
   resources :home_contents, :only => [:edit, :update] 
 
-  resources :flower
+  #resources :flower
 
 end

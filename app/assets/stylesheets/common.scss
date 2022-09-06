@@ -14,6 +14,9 @@ html.application-html-control, body.application-control {
   font-size: 14px;
   background: #F1F2FA;
 }
+html.application-no-header, html.application-no-header body{
+  height: 100%;
+}
 body.application-home {
   font-size: 14px;
 }

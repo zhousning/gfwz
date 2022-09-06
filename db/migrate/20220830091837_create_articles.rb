@@ -8,6 +8,7 @@ class CreateArticles < ActiveRecord::Migration
     
       t.text :content
     
+      t.text :wxlink
 
     
 

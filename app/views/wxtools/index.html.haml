@@ -66,7 +66,8 @@
                             -#
                               = link_to "查看",  wxtool_path(idencode(wxtool.id)), :class => "button button-primary button-small mr-1" 
                             = link_to "删除",  wxtool_path(idencode(wxtool.id)), :method => :delete, :data => {:confirm => "确定删除吗?"}, :class => "button button-caution button-small" 
-                            = link_to start_wxtools_path, :class => "text-primary col" do
+                            -#
+                              = link_to start_wxtools_path, :class => "text-primary col" do
                               = fa_icon "wrench"
             -#
               .col-md-12.site-theme-paginate-wrapper.d-flex.justify-content-center.mt-3

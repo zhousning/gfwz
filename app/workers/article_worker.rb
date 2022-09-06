@@ -25,6 +25,11 @@ class ArticleWorker
       @second_selectors = @second_spider.selectors
 
       first_result[@first_selector.name + '$' + @first_selector.title].each do |link|
+        next if link.blank?
+
+        article = Article.find_by_wxlink(link.strip)
+        next if article
+
         @second_spider.link = link
         second_result = spider_tool.process(@second_spider) 
         title_result = second_result[@second_selectors[0].name + '$' + @second_selectors[0].title][0]
@@ -56,8 +61,7 @@ class ArticleWorker
           content = str
         end
 
-        @article = Article.find_by_title(title)
-        Article.create!(:title => title, :pdt_date => Date.today, :content => content, :secd => @secd) unless @article
+        Article.create!(:title => title, :pdt_date => Date.today, :content => content, :wxlink => link.strip, :secd => @secd)
       end
     end
   end 

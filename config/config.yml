@@ -174,7 +174,7 @@ defaults:
     btn_show: 详情
     btn_delete: 删除
     btn_save: 保存
-    company_name: 山东公用水务集团官网后台管理系统
+    company_name: 山东公用水务集团官网智能管理系统
     opening: 新用户
     pending: 待审核
     rejected: 不通过
@@ -456,7 +456,7 @@ development:
   workers: *40
   sign_logs: *41
   frsts:
-    label: 一级类目
+    label: 类目管理
     name: 名称
     sequence: 排序
     index_page: 列表页显示
@@ -473,7 +473,7 @@ development:
     pdt_date: 发文日期
     content: 内容
   carousels:
-    label: 轮播图
+    label: 走马灯 
     title: 标题
     sequence: 顺序
   showrooms:

@@ -14,45 +14,21 @@
           .row
             .col-sm-12
               %h2.text-center
-                = image_tag "gykg.jpg"
-            .col-md-8.offset-2.p-5.border
-              .card.border-0.mb-3.rounded-0
-                .card-header.bg-transparent.border-dark
-                  %h5
-                    = Setting.articles.label
-                .card-body
-                  %table.table-bordered.day-pdt-table.w-100.mb-3
-                    %tbody
+                = @article.title
+              %p.text-center                                                                                               
+                %small                                                                                                     
+                  = "发布时间: " +  @article.pdt_date.strftime('%Y-%m-%d')                                                
+            .col-md-6.offset-3.p-5.border
+              = @article.content.nil? ? '' : @article.content.html_safe       
                     
-                      %tr
-                        %td.p-2.text-center
-                          = Setting.articles.title
-                        %td.p-2.text-center
-                          = @article.title
-                    
-                      
-                        %td.p-2.text-center
-                          = Setting.articles.pdt_date
-                        %td.p-2.text-center
-                          = @article.pdt_date
-                    
-                      
-                        %td.p-2.text-center
-                          = Setting.articles.content
-                        %td.p-2.text-center
-                          = @article.content
-                    
-              .row
-              
-              .row
-              
-              .row
-              
-              
-              .row
-                - @article.attachments.each_with_index do |e, i|
+              - if @article.attachments.size > 0
+                .row
                   .col-md-12
-                    = link_to File.basename(URI.decode(e.file_url)), download_attachment_article_path(idencode(@article.id), :number => i, :ft => '')
+                    %h5.text-danger
+                      附件:
+                  - @article.attachments.each_with_index do |e, i|
+                    .col-md-12
+                      = link_to File.basename(URI.decode(e.file_url)), download_attachment_article_path(idencode(@article.id), :number => i, :ft => '')
               
               
       = render "layouts/bootstrap/card"
