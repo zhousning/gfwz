@@ -13,3 +13,11 @@
           = "发布时间: " +  @article.pdt_date.strftime('%Y-%m-%d')                                                
       %hr                                                                                                          
       = @article.content.nil? ? '' : @article.content.html_safe       
+      - if @article.attachments.size > 0
+        .row
+          .col-md-12
+            %h5.text-danger
+              附件:
+          - @article.attachments.each_with_index do |e, i|
+            .col-md-12
+              = link_to File.basename(URI.decode(e.file_url)), download_attachment_article_path(idencode(@article.id), :number => i, :ft => '')

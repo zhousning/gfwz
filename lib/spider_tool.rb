@@ -22,6 +22,11 @@ class SpiderTool
     @parse_error = Logger.new( @root_dir + '/parse_error.log')
   end
 
+  #返回hash, {
+  #            selector.name&selector.title: ["", ""], 
+  #            "选择器名&标题名": ["", ""],
+  #            "选择器名&标题名": ["", ""],
+  #          } 
   def process(spider)
     @spider = spider
     @doc_save = @spider.doc_save
@@ -100,7 +105,7 @@ class SpiderTool
   end
   
   def get_doc(spider, search_link)
-    sleep rand(10..20) 
+    sleep rand(1..5) 
     retry_times = 0
     doc = nil
 
@@ -137,7 +142,7 @@ class SpiderTool
   
   #此处为了下载公众号文章把获取后缀给去掉了,因为公众号文章图片不知道什么格式
   def download_file(image)
-    sleep rand(10..20) 
+    sleep rand(1..5) 
     begin
       name = Time.now.to_i.to_s + "%04d" % [rand(10000)]
       img = name

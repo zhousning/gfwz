@@ -2,6 +2,16 @@ class ArticleWorker
   include Sidekiq::Worker
 
   def perform
+    spider_tool = WxarticleSpider.new
+
+    @spiderdt = Spider.find_by_link('https://www.dtdjzx.gov.cn/')
+    dtspider_result = spider_tool.process(@spiderdt) 
+    @dtselector = @spiderdt.selectors
+    dtlink = dtspider_result[@dtselector[0].name + '$' + @dtselector[0].title][0]
+    dttitle = dtspider_result[@dtselector[1].name + '$' + @dtselector[1].title][0]
+    @home_content = HomeContent.first
+    @home_content.update_attributes(:dtevent => dttitle, :dtlink => dtlink)
+
     Wxtool.all.each do |wxtool|
       @secd = Secd.find(wxtool.secd_id)
       link = wxtool.link
@@ -9,7 +19,6 @@ class ArticleWorker
       @first_spider = Spider.first
       @second_spider = Spider.second
       @first_spider.link = link
-      spider_tool = SpiderTool.new
       first_result = spider_tool.process(@first_spider) 
 
       @first_selector = @first_spider.selectors.first

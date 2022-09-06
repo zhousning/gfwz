@@ -76,3 +76,12 @@ user.factories << all_factories
 grp_mgn = User.create!(:phone => "05376688", :password => "swjt0537", :password_confirmation => "swjt0537", :name => "水务集团管理者", :roles => @grp_mgn, :factories => all_factories)
 
 HomeContent.create
+@spider1 = Spider.create("doc_save"=>"false", "doc_parse"=>"true", "cookie"=>"", "agent"=>"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36", "content_type"=>"application/x-www-form-urlencoded")
+Selector.create("name"=>".album__list-item.js_album_item.js_wx_tap_highlight.wx_tap_cell", "title"=>"data-link", "category"=>"1", "file"=>"false", :spider => @spider1)
+@spider2 = Spider.create("doc_save"=>"false", "doc_parse"=>"true", "cookie"=>"", "agent"=>"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36", "content_type"=>"application/x-www-form-urlencoded")
+Selector.create("name"=>"#activity-name", "title"=>"标题", "category"=>"0", "file"=>"false", :spider => @spider2)
+Selector.create("name"=>"#js_content", "title"=>"内容", "category"=>"3", "file"=>"false", :spider => @spider2)
+Selector.create("name"=>".rich_pages.wxw-img", "title"=>"data-src", "category"=>"2", "file"=>"true", :spider => @spider2)
+@spiderdt = Spider.create("link"=>"https://www.dtdjzx.gov.cn/", "page"=>"", "doc_save"=>"false", "doc_parse"=>"true", "cookie"=>"", "agent"=>"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36", "content_type"=>"application/x-www-form-urlencoded")
+Selector.create("name"=>".right.topline a", "title"=>"href", "category"=>"1", "file"=>"false", :spider => @spiderdt)
+Selector.create("name"=>".right.topline a p.h1", "title"=>"内容", "category"=>"0", "file"=>"false", :spider => @spiderdt)
