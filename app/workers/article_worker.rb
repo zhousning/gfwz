@@ -50,7 +50,7 @@ class ArticleWorker
         end
 
         content.gsub!("visibility: hidden;", '')
-        if imgs_result.size > 0 
+        if !imgs_result.nil? && imgs_result.size > 0 
           arr = content.split(/<img[^>]+>/)
           str = ''
           arr.each_with_index do |item, index|
