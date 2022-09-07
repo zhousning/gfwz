@@ -16,6 +16,7 @@ class CreateSecds < ActiveRecord::Migration
     
       t.string :header,  null: false, default: Setting.systems.default_str
     
+      t.string :svg,  null: false, default: Setting.systems.default_str
 
     
 

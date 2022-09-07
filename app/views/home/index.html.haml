@@ -20,17 +20,28 @@
               %span.carousel-control-next-icon{"aria-hidden" => "true"}
               %span.sr-only Next
 
+%section.mt-5
+  .container
+    .row
+      .col-md-8.offset-2.d-flex.align-items-center
+        = image_tag "encryption.svg"
+        %marquee{behavior:"scroll", hspace:"10", onmouseout: "this.start()", onmouseover: "this.stop()"}
+          - @dier.each do |secd|
+            - secd[:articles].each_with_index do |article, index|
+              - if index <= 0
+                %span.mr-5.text-dark.home-marquee-text
+                  = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+
 %section.my-5
   .container
     .row
       .col-md-12
-        %header
-          .header-container
-            .container
-              .col-md-12.header-title
-                %h4.text-center{:style => "line-height:45px;color:#F94500;"}
-                  %a.font-weight-bold{:target => "_blank", :href => "#{@home_content.dtlink}"}
-                    = @home_content.dtevent
+        .header-container
+          .container
+            .col-md-12.header-title
+              %h4.text-center{:style => "line-height:45px;color:#F94500;"}
+                %a.font-weight-bold{:target => "_blank", :href => "#{@home_content.dtlink}"}
+                  = @home_content.dtevent
   -#
     .row
       .col-md-12
@@ -48,7 +59,10 @@
       .col-md-12
         %p.strong.text-center
           = @home_content.video_title
-%section
+
+
+-#
+  %section
   .container
     .row
       - @dier.each do |secd|

@@ -83,7 +83,7 @@ class FrstsController < ApplicationController
   
   
     def secd_params
-      [:id, :name, :sequence, :index_page, :show_page , :header, :_destroy]
+      [:id, :name, :sequence, :index_page, :show_page , :header, :_destroy, :svg]
     end
   
 end

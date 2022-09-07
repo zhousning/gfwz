@@ -17,6 +17,11 @@
                 %td.p-2.text-center
                   = f.text_field :name, :class => "form-control", :required => true 
                 
+                %td.p-2.text-center
+                  = f.label Setting.secds.svg, :class => "text-center"
+                %td.p-2.text-center
+                  = f.text_field :svg, :class => "form-control", :required => true 
+                
               
                 %td.p-2.text-center
                   = f.label Setting.secds.sequence, :class => "text-center"

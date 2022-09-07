@@ -464,6 +464,7 @@ development:
   secds:
     label: 二级类目
     name: 名称
+    svg: svg图片
     sequence: 排序
     index_page: 列表页显示
     show_page: 详情页显示
