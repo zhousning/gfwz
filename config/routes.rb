@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   #get 'forget', to: 'admin/dashboard#index'
   #devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, :path => 'nigexiaojiang', :skip => [ :passwords, :registrations, :confirmations], controllers: {  sessions: 'users/sessions' }
   devise_scope :user do
     #get 'forget', to: 'users/passwords#forget'
     #patch 'update_password', to: 'users/passwords#update_password'
@@ -60,9 +60,10 @@ Rails.application.routes.draw do
   end
 
   resources :secds, :only => [] do
-    resources :articles, :only => [] do
+    resources :newspapers, :only => [] do
       get :list, :on => :collection
       get :info, :on => :member
+      get :download_attachment, :on => :member
     end
   end
   resources :articles do

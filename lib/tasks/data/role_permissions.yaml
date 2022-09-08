@@ -11,7 +11,7 @@
   permissions: 
     -
       controller: articles_controller
-      actions: [index, show, new, create, edit, update, destroy]
+      actions: [index, show, new, create, edit, update, destroy, download_attachment]
 - 
   role_name: 走马灯管理
   level: 1

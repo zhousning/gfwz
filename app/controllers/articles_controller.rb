@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   layout "application_control"
-  before_filter :authenticate_user!, :except =>[:list, :info, :download_attachment]
-  authorize_resource :except =>[:list, :info, :download_attachment]
+  before_filter :authenticate_user!
+  authorize_resource
 
    
   def index
@@ -48,23 +48,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(iddecode(params[:id]))
     @article.destroy
     redirect_to :action => :index
-  end
-   
-
-  def list
-    @secd = Secd.find(iddecode(params[:secd_id]))
-    @frst = @secd.frst
-    @secds = @frst.secds
-    @articles = @secd.articles.order('pdt_date DESC').page( params[:page]).per( Setting.systems.per_page )
-    render :layout => "application_home"
-  end
-   
-  def info 
-    @secd = Secd.find(iddecode(params[:secd_id]))
-    @frst = @secd.frst
-    @secds = @frst.secds
-    @article = @secd.articles.find(iddecode(params[:id]))
-    render :layout => "application_home"
   end
 
   def download_attachment 

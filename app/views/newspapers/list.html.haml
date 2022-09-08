@@ -3,12 +3,12 @@
     #sidebar-list.col-12.col-md-3.min-height-info.shadow{:style => "background: url('#{@frst.sidebar.blank? ? image_url('sidebar-bg.jpg') : @frst.sidebar_url}') no-repeat;background-size: cover;"}
       %ul.list-group.list-group-flush.pt-3
         - @secds.each do |secd|
-          = link_to secd.name, list_secd_articles_path(idencode(secd.id)), :class => "list-group-item list-group-item-action hvr-sweep-to-right"
+          = link_to secd.name, list_secd_newspapers_path(idencode(secd.id)), :class => "list-group-item list-group-item-action hvr-sweep-to-right"
 
     #sidebar-content.ml-4.col-12.col-md-8.bg-white.min-height-900.pt-3.shadow
       %ul.list-group.list-group-flush
         - @articles.each_with_index do |article, index|
-          = link_to info_secd_article_path(idencode(@secd.id), idencode(article.id)), :class => "list-group-item list-group-item-action" do
+          = link_to info_secd_newspaper_path(idencode(@secd.id), idencode(article.id)), :class => "list-group-item list-group-item-action" do
             .row
               .col-7.col-sm-10.text-truncate
                 %p.mb-0.text-truncate

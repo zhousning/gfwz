@@ -30,7 +30,7 @@
             - secd[:articles].each_with_index do |article, index|
               - if index <= 0
                 %span.mr-5.text-dark.home-marquee-text
-                  = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                  = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
 
 %section.my-5
   .container
@@ -71,14 +71,14 @@
             .card-header.rounded-0.p-2.qijianbox-title
               = secd[:name]
               %span.pull-right
-                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
+                = link_to '>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-white' 
             .card-body.px-0.pt-2.pb-3
               %ul.mb-0.pr-3
                 - secd[:articles].each do |article|
                   %li.py-1.text-dark
                     .row
                       .col-12.col-sm-12.text-truncate
-                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                        = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
                       -#
                         .col-5.col-sm-4
                         %p.text-muted.text-right.font-weight-light.mb-0
@@ -97,14 +97,14 @@
               %span.home-section-tag.p-1.qijianbox-title
                 = secd[:name]
               %span.pull-right
-                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-dark' 
+                = link_to '>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-dark' 
             .card-body.px-0.pt-2.pb-3
               %ul.mb-0.pr-3
                 - secd[:articles].each do |article|
                   %li.py-1.text-primary
                     .row
                       .col-7.col-sm-8.text-truncate
-                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                        = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
                       .col-5.col-sm-4
                         %p.text-muted.text-right.font-weight-light.mb-0
                           = article[:pdt_date]
@@ -121,14 +121,14 @@
                 = secd[:name]
               -#
                 %span.pull-right
-                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-dark' 
+                = link_to '>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-dark' 
             .card-body.px-0.pt-2.pb-3
               %ul.mb-0.pr-3
                 - secd[:articles].each do |article|
                   %li.py-1.text-danger
                     .row
                       .col-7.col-sm-8.text-truncate
-                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                        = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
                       .col-5.col-sm-4
                         %p.text-muted.text-right.font-weight-light.mb-0
                           = article[:pdt_date]
@@ -136,7 +136,7 @@
           .col-sm-12.p-1.shadow
             = image_tag 'dangde.png', :class => 'img-fluid'
           .col-sm-12.mt-2.bg-white.shadow.hvr-grow-shadow
-            = link_to list_secd_articles_path(idencode(secd[:id])), :class => 'text-dark d-flex align-items-center justify-content-between p-3 text-decoration-none' do 
+            = link_to list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-dark d-flex align-items-center justify-content-between p-3 text-decoration-none' do 
               %span.home-view-more-title
                 浏览更多
               = fa_icon "arrow-circle-o-right", :class => "home-view-more"
@@ -150,14 +150,14 @@
             .card-header.rounded-0.p-2.qijianbox-title
               = secd[:name]
               %span.pull-right
-                = link_to '>>', list_secd_articles_path(idencode(secd[:id])), :class => 'text-white' 
+                = link_to '>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-white' 
             .card-body.px-0.py-1
               %ul.mb-0.pr-3
                 - secd[:articles].each do |article|
                   %li.py-1.text-info
                     .row
                       .col-7.col-sm-8.text-truncate
-                        = link_to article[:title], info_secd_article_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                        = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
                       .col-5.col-sm-4
                         %p.text-muted.text-right.font-weight-light.mb-0
                           = article[:pdt_date]

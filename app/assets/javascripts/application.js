@@ -15,7 +15,6 @@
 //= require parsley
 //= require parsley.i18n.zh_cn
 //= require popper
-//= require dropzone
 //= require swiper
 //= require_tree .
 //= require bootstrap-sprockets

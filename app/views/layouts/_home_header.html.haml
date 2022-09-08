@@ -24,7 +24,7 @@
                   - frst.secds.order('sequence DESC').each do |secd|
                     .col.box
                       - if secd.index_page
-                        = link_to list_secd_articles_path(idencode(secd.id)), :class => "hvr-underline-from-left text-decoration-none" do 
+                        = link_to list_secd_newspapers_path(idencode(secd.id)), :class => "hvr-underline-from-left text-decoration-none" do 
                           = image_tag 'frsticon/' + secd.svg + '.svg'
                           -#
                             = image_tag secd.header_url
@@ -38,7 +38,7 @@
                           %p.text-dark.mt-2
                             = secd.name
                       - else
-                        = link_to info_secd_article_path(idencode(secd.id), idencode(secd.articles.last.id)), :class => "hvr-underline-from-left text-decoration-none"  do 
+                        = link_to info_secd_newspaper_path(idencode(secd.id), idencode(secd.articles.last.id)), :class => "hvr-underline-from-left text-decoration-none"  do 
                           = image_tag 'frsticon/' + secd.svg + '.svg'
                           -#
                             = image_tag secd.header_url

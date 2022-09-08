@@ -13,7 +13,7 @@ class WxarticleSpider
   MAX_RETRY_TIMES = 5
 
   def initialize
-    spider_dir = File.join(Rails.root, "public", "spider")
+    spider_dir = File.join(Rails.root, "public", "newspapers")
     Dir::mkdir(spider_dir) unless File.directory?(spider_dir)
 
     @root_dir = spider_dir
@@ -96,7 +96,7 @@ class WxarticleSpider
       end
       result_hash[s.name + '$' + s.title] = @result
       if s.file
-        @target = File.join(Rails.root, "public", "spider", s.title) 
+        @target = File.join(Rails.root, "public", "newspapers", s.title) 
         File.open(@target + ".yml",'a+'){|f| YAML.dump(@result, f)}
       end
       @result = []
@@ -149,7 +149,7 @@ class WxarticleSpider
       #suffix = image.sub(/.+\./, '')
       #img = name + "." + suffix
 
-      img_dir = File.join(Rails.root, "public", "spider", Date.today.to_s)
+      img_dir = File.join(Rails.root, "public", "newspapers", Date.today.to_s)
       Dir::mkdir(img_dir) unless File.directory?(img_dir)
 
       File.open("#{img_dir}/#{img}", "w") do |f|
@@ -159,7 +159,7 @@ class WxarticleSpider
       img = image 
       @download_error.error "download file error: #{image}  " + e.message
     end
-    return "/spider/" + Date.today.to_s + "/" + img 
+    return "/newspapers/" + Date.today.to_s + "/" + img 
   end
   
   def img_base64(image_src)
@@ -170,7 +170,7 @@ class WxarticleSpider
   def save_doc(link, doc, i)
     #name = Time.now.to_i.to_s + "%04d" % [rand(10000)] + ".txt"
     name = i.to_s + ".txt"
-    file = File.join(Rails.root, "public", "spider", name) 
+    file = File.join(Rails.root, "public", "newspapers", name) 
     File.open(file,'w+') do|f| 
       f.write(doc)
     end

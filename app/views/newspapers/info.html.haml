@@ -3,7 +3,7 @@
     #sidebar-list.col-12.col-md-3.min-height-info.shadow{:style => "background: url('#{@frst.sidebar.blank? ? image_url('sidebar-bg.jpg') : @frst.sidebar_url}') no-repeat;background-size: cover;"}
       %ul.list-group.list-group-flush.pt-3
         - @secds.each do |secd|
-          = link_to secd.name, list_secd_articles_path(idencode(secd.id)), :class => "list-group-item list-group-item-action hvr-sweep-to-right"
+          = link_to secd.name, list_secd_newspapers_path(idencode(secd.id)), :class => "list-group-item list-group-item-action hvr-sweep-to-right"
 
     #sidebar-content.ml-4.col-12.col-md-8.bg-white.min-height-900.px-4.py-3.shadow
       %h5.text-center.mt-3                                                                                         
@@ -20,4 +20,4 @@
               附件:
           - @article.attachments.each_with_index do |e, i|
             .col-md-12
-              = link_to File.basename(URI.decode(e.file_url)), download_attachment_article_path(idencode(@article.id), :number => i, :ft => '')
+              = link_to File.basename(URI.decode(e.file_url)), download_attachment_newspaper_path(idencode(@article.id), :number => i, :ft => '')
