@@ -1,3 +1,5 @@
+- provide(:title, @article.title)
+
 .container.mt-4.py-3
   .row
     #sidebar-list.col-12.col-md-3.min-height-info.shadow{:style => "background: url('#{@frst.sidebar.blank? ? image_url('sidebar-bg.jpg') : @frst.sidebar_url}') no-repeat;background-size: cover;"}
@@ -20,4 +22,4 @@
               附件:
           - @article.attachments.each_with_index do |e, i|
             .col-md-12
-              = link_to File.basename(URI.decode(e.file_url)), download_attachment_newspaper_path(idencode(@article.id), :number => i, :ft => '')
+              = link_to File.basename(URI.decode(e.file_url)), download_attachment_secd_newspaper_path(idencode(@article.secd.id), idencode(@article.id), :number => i, :ft => '')

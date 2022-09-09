@@ -19,17 +19,17 @@ zh-CN:
 
   layouts:
     application:
-      site_title: "山东公用水务集团官网智能管理系统"
+      site_title: "嘉祥公用水务有限公司"
     application_control:
-      site_title: "山东公用水务集团官网智能管理系统"
+      site_title: "嘉祥公用水务有限公司"
     application_control_map:
-      site_title: "山东公用水务集团官网智能管理系统"
+      site_title: "嘉祥公用水务有限公司"
     application_mobile:
-      site_title: "山东公用水务集团官网智能管理系统"
+      site_title: "嘉祥公用水务有限公司"
     application_home:
-      site_title: "山东公用水务集团官网智能管理系统"
+      site_title: "嘉祥公用水务有限公司"
     application_no_header:
-      site_title: "山东公用水务集团官网智能管理系统"
+      site_title: "嘉祥公用水务有限公司"
   views:
       pagination:
         first: "首页"
@@ -137,7 +137,7 @@ zh-CN:
   trees:
     index:
       title:
-        山东公用水务集团官网智能管理系统
+        嘉祥公用水务有限公司
   authorities:
     roles:
       manage:
@@ -301,3 +301,8 @@ zh-CN:
       title: 文章详情 
     destroy:
       title: 删除文章 
+  newspapers:
+    list:
+      title: 文章列表  
+    info:
+      title: 文章
