@@ -44,7 +44,7 @@ class HomeSettingsController < ApplicationController
     @home_setting = HomeSetting.find(iddecode(params[:id]))
    
     if @home_setting.update(home_setting_params)
-      redirect_to home_setting_path(idencode(@home_setting.id)) 
+      redirect_to edit_home_setting_path(idencode(@home_setting.id)) 
     else
       render :edit
     end

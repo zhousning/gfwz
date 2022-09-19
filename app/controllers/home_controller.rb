@@ -46,5 +46,4 @@ class HomeController < ApplicationController
       obj
     end
 
-
 end

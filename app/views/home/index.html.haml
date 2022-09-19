@@ -1,5 +1,41 @@
 - provide(:title, t('.title'))
 
+-#
+  %section.my-3
+  .container.py-2.bg-white
+    .row
+      .col-3
+        .card.rounded-0.border-0
+          -#
+            .card-header.bg-white.text-primary.p-2
+              业务办理地址
+          .card-body.p-0
+            %ul.list-group.list-group-flush
+              %li.list-group-item.py-e.bg-2eacce.text-white
+                %p
+                  崇文新区东门南梁山水务客服中心
+                客服热线:7360555
+              %li.list-group-item.py-3.bg-2eacce.text-white
+                %p
+                  新城政务中心服务大厅梁山水务业务办理窗口
+                客服热线:7366767
+      .col-9
+        %main{:role => "main"}
+          #carouselExampleIndicators.carousel.slide{"data-ride" => "carousel"}
+            %ol.carousel-indicators
+              - @carousels.each_with_index do |c, i|          
+                %li{:class => i == 0 ? "active" : '', "data-slide-to" => i.to_s, "data-target" => "#carouselExampleIndicators"}
+            .carousel-inner.rounded-0
+              - @carousels.each_with_index do |c, i|          
+                .carousel-item{:class => i == 0 ? "active" : ''}
+                  = image_tag c.photo, :class => "d-block w-100"
+            %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
+              %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+              %span.sr-only Previous
+            %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleIndicators", :role => "button"}
+              %span.carousel-control-next-icon{"aria-hidden" => "true"}
+              %span.sr-only Next
+
 %section
   .container-fluid.bg-white
     .row
@@ -20,126 +56,108 @@
               %span.carousel-control-next-icon{"aria-hidden" => "true"}
               %span.sr-only Next
 
-%section.mt-5
+%section.my-3
+  .container.py-2.bg-white
+    .row
+      .col-3
+        .border.text-center.pt-4.mb-2.py-2.bg-1e3b7a
+          %a{:href => "#"}
+            %p.mb-3
+              %i.fa.fa-group.fa-3x.text-white
+            %p.mb-3.text-white.font-weight-bold
+              我的用水
+      .col-3
+        .border.text-center.pt-4.py-2.bg-ff7900
+          %a{:href => "#"}
+            %p.mb-3
+              %i.fa.fa-mobile.fa-3x.text-white
+            %p.mb-3.text-white.font-weight-bold
+              用户报装
+      .col-3
+        .border.text-center.pt-4.py-2.bg-8d5870
+          %a{:href => "#", "data-target" => "#newModal", "data-toggle" => "modal", :type => "button" }
+            %p.mb-3
+              %i.fa.fa-map.fa-3x.text-white
+            %p.mb-3.text-white.font-weight-bold
+              服务网点
+      .col-3
+        .border.text-center.pt-4.py-2.bg-006c71
+          %a{:href => "#"}
+            %p.mb-3
+              %i.fa.fa-list.fa-3x.text-white
+            %p.mb-3.text-white.font-weight-bold
+              办理指南
+
+
+%section.my-3
   .container
     .row
-      .col-md-8.offset-2.d-flex.align-items-center
-        = image_tag "encryption.svg"
-        %marquee{behavior:"scroll", hspace:"10", onmouseout: "this.start()", onmouseover: "this.stop()"}
-          - @dier.each do |secd|
-            - secd[:articles].each_with_index do |article, index|
-              - if index <= 0
-                %span.mr-5.text-dark.home-marquee-text
-                  = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+      .col-3
+        .card.rounded-0
+          .card-header.rounded-0.p-2.qijianbox-title
+            公告信息
+          .card-body.px-0.py-1
+            %ul.mb-0
+              - @dier.each do |secd|
+                - secd[:articles].each_with_index do |article, index|
+                  - if index <= 3 
+                    %li.py-1.text-info
+                      = link_to truncate(article[:title], :length => 14), info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+      .col-9
+        .card.rounded-0.border.border-white
+          .card-header.bg-white.text-primary.p-0.border-0
+            %nav
+              .index-nav-tab.nav.nav-tabs{:role => "tablist"}
+                - @diyi.each_with_index do |secd, index|
+                  %a.nav-item.nav-link{:class => index == 0 ? 'active' : '' , :id => "nav-home#{index}-tab", "aria-controls" => "nav-home#{index}", "aria-selected" => index == 0 ? 'true' : 'false' , "data-toggle" => "tab", :href => "#nav-home#{index}", :role => "tab"}
+                    = secd[:name]
+          #nav-tabContent.tab-content.py-1
+            - @diyi.each_with_index do |secd, index|
+              .tab-pane.fade{:class => index == 0 ? 'active show' : '' , :id => "nav-home#{index}", "aria-labelledby" => "nav-home#{index}-tab", :role => "tabpanel"}
+                %ul.mb-0
+                  - secd[:articles].each do |article|
+                    %li.py-1.text-primary
+                      .row
+                        .col-10
+                          = link_to truncate(article[:title], :length => 35), info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                        .col-2
+                          %p.text-muted.font-weight-light.mb-0
+                            = article[:pdt_date]
+                        -#
+                          .col-2
+                            %p.text-muted.font-weight-light.mb-0
+                              48.00万
 
-%section.my-5
+%section.my-3
   .container
     .row
-      .col-md-12
-        .header-container
-          .container
-            .col-md-12.header-title
-              %h4.text-center{:style => "line-height:45px;color:#F94500;"}
-                %a.font-weight-bold{:target => "_blank", :href => "#{@home_content.dtlink}"}
-                  = @home_content.dtevent
-  -#
-    .row
-      .col-md-12
-        %h3.my-5.text-center{:style => "color:#F94500;"}
-          "水务惠民生 情系千万家"
-        %hr
-
-- unless @home_content.video.blank?
-  %section.mb-5
-    .container
-      .row
-        .col-md-8.offset-2
-          = video_tag @home_content.video_url, :width => '100%', :controls => 'controls'
-    .row
-      .col-md-12
-        %p.strong.text-center
-          = @home_content.video_title
-
-
--#
-  %section
-  .container
-    .row
-      - @dier.each do |secd|
-        .col-sm-4.mb-3
-          .card.rounded-0
-            .card-header.rounded-0.p-2.qijianbox-title
-              = secd[:name]
-              %span.pull-right
-                = link_to '>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-white' 
-            .card-body.px-0.pt-2.pb-3
-              %ul.mb-0.pr-3
-                - secd[:articles].each do |article|
-                  %li.py-1.text-dark
-                    .row
-                      .col-12.col-sm-12.text-truncate
-                        = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
-                      -#
-                        .col-5.col-sm-4
-                        %p.text-muted.text-right.font-weight-light.mb-0
-                          = article[:pdt_date]
-
-%section.diyi-section.py-5.my-5
-  .container
-    .row.mb-5
-      .col-sm-12
-        = image_tag 'biaoyu.png', :class => 'img-fluid'
-    .row
-      - @diyi.each do |secd|
-        .col-sm-6.mb-5
-          .card.border-0.rounded-0.shadow.hvr-grow-shadow.d-block.position-relative
-            .card-header.rounded-0.p-2.home-section-title.border-0.mb-3
-              %span.home-section-tag.p-1.qijianbox-title
-                = secd[:name]
-              %span.pull-right
-                = link_to '>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-dark' 
-            .card-body.px-0.pt-2.pb-3
-              %ul.mb-0.pr-3
-                - secd[:articles].each do |article|
-                  %li.py-1.text-primary
-                    .row
-                      .col-7.col-sm-8.text-truncate
-                        = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
-                      .col-5.col-sm-4
-                        %p.text-muted.text-right.font-weight-light.mb-0
-                          = article[:pdt_date]
-
-%section.mb-5
-  .container
-    - @dangjian.each do |secd|
-      .row
-        .col-sm-9.mb-3
-          .card.border-0.rounded-0.shadow.d-block.position-relative
-            .card-header.rounded-0.p-2.home-section-title.border-0.mb-3
-              %span.home-section-tag.p-1.home-dang-title
-                = image_tag 'shijiuda.png'
-                = secd[:name]
-              -#
-                %span.pull-right
-                = link_to '>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-dark' 
-            .card-body.px-0.pt-2.pb-3
-              %ul.mb-0.pr-3
-                - secd[:articles].each do |article|
-                  %li.py-1.text-danger
-                    .row
-                      .col-7.col-sm-8.text-truncate
-                        = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
-                      .col-5.col-sm-4
-                        %p.text-muted.text-right.font-weight-light.mb-0
-                          = article[:pdt_date]
-        .col-sm-3
-          .col-sm-12.p-1.shadow
-            = image_tag 'dangde.png', :class => 'img-fluid'
-          .col-sm-12.mt-2.bg-white.shadow.hvr-grow-shadow
-            = link_to list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-dark d-flex align-items-center justify-content-between p-3 text-decoration-none' do 
-              %span.home-view-more-title
-                浏览更多
-              = fa_icon "arrow-circle-o-right", :class => "home-view-more"
+      .col-3
+        .card.rounded-0
+          = image_tag 'dangde.png', :class => 'img-fluid'
+      .col-9
+        -#
+          .row.mb-3
+          .col-12
+            = image_tag "dangjian.png", :class => "w-100"
+        .card.rounded-0.border.border-white
+          .card-header.bg-white.text-primary.p-0.border-0
+            %nav
+              .index-nav-tab.nav.nav-tabs{:role => "tablist"}
+                - @dangjian.each_with_index do |secd, index|
+                  %a.nav-item.nav-link{:class => index == 0 ? 'active' : '' , :id => "dangjian#{index}-tab", "aria-controls" => "dangjian#{index}", "aria-selected" => index == 0 ? 'true' : 'false' , "data-toggle" => "tab", :href => "#dangjian#{index}", :role => "tab"}
+                    = secd[:name]
+          #nav-tabContent.tab-content.py-1
+            - @dangjian.each_with_index do |secd, index|
+              .tab-pane.fade{:class => index == 0 ? 'active show' : '' , :id => "dangjian#{index}", "aria-labelledby" => "dangjian#{index}-tab", :role => "tabpanel"}
+                %ul.mb-0
+                  - secd[:articles].each do |article|
+                    %li.py-1.text-danger
+                      .row
+                        .col-10
+                          = link_to article[:title], info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body"
+                        .col-2
+                          %p.text-muted.font-weight-light.mb-0
+                            = article[:pdt_date]
 
 %section
   .container
@@ -161,61 +179,68 @@
                       .col-5.col-sm-4
                         %p.text-muted.text-right.font-weight-light.mb-0
                           = article[:pdt_date]
-    -#
-      .col-sm-6.mb-3
-        -#
-          .row.mb-3
-          .col-12
-            = image_tag "wscl.jpg", :class => "w-100"
-        .card.rounded-0
-          .card-header.rounded-0.p-2.qijianbox-title
-            = Setting.reports.ctg_cstr
-            %span.pull-right
-              = link_to '>>', cstr_reports_path, :class => 'text-white' 
-          .card-body.px-0.py-1
-            %ul.mb-0.pr-3
-              - @cmpt_cstrs.each do |cstr|
-                %li.py-1.text-primary
-                  .row
-                    .col-7.col-sm-8.text-truncate
-                      = link_to cstr.title, report_path(cstr), :class => "text-body"
-                    .col-5.col-sm-4
-                      %p.text-muted.text-right.font-weight-light.mb-0
-                        = cstr.pdt_date.strftime('%Y-%m-%d')
-                    -#
-                      .col-2
-                        %p.text-muted.font-weight-light.mb-0
-                          48.00万
-
-
-%section.mb-5
-  .container
-    -#
-      .row.mb-3
-      .col-md-12.qijianbox-title.py-3
-        %h3.text-center.font-weight-bold
-          水务担当
-    .row.mb-5
-      .col-sm-12
-        = image_tag 'shuiwudandang.png', :class => 'img-fluid'
-    .row.flex-box.flex-wrap-wrap
-      - if !@showrooms.blank?
-        - @showrooms.each do |room|
-          .col-sm-3.flex-box.flex-justify-center.flex-align-center
-            = link_to room.photo_url, :class => 'fancybox' do
-              = image_tag room.photo_url, :class => "img-fluid"
-
--#
-  %section.mb-5
+%section.my-3
   .container
     .row
-      .col-md-12.qijianbox-title.py-3.mb-3
-        %h3.text-center.font-weight-bold
-          水务服务
-      .col-md-12
-        = image_tag 'members.png', :class => "img-fluid"
-
-%section.diyi-section.py-5.mt-5
+      .col-3
+        .card.rounded-0.mb-3
+          .card-header.p-2.rounded-0.qiyezhanting-title
+            友情链接
+          .card-body.p-2
+            .col-12
+              = link_to 'http://www.sdgykg.com', :target => '_blank' do 
+                -#
+                  = image_tag "gykg.png" , :class=> 'w-100' 
+                %p.text-muted
+                  山东公用控股有限公司
+            .col-12
+              = link_to 'http://www.sdgyswjt.com', :target => '_blank' do 
+                -#
+                  = image_tag "swjt.png" , :class=> 'w-100' 
+                %p.text-muted
+                  山东公用水务集团有限公司 
+            .col-12
+              = link_to 'http://www.jxgykg.com', :target => '_blank' do 
+                -#
+                  = image_tag "jxsw.png" 
+                %p.text-muted
+                  嘉祥公用水务有限公司 
+            .col-12
+              = link_to 'http://www.zcszlsgs.com', :target => '_blank' do 
+                -#
+                  = image_tag "zcsw.png" 
+                %p.text-muted
+                  邹城公用水务有限公司 
+            .col-12
+              = link_to 'http://www.yzgysw.com', :target => '_blank' do 
+                -#
+                  = image_tag "yzsw.png" 
+                %p.text-muted
+                  兖州公用水务有限公司 
+            .col-12
+              = link_to 'http://www.lszls.net', :target => '_blank' do 
+                -#
+                  = image_tag "lssw.png" 
+                %p.text-muted
+                  梁山公用水务有限公司 
+            .col-12
+              = link_to 'http://www.wsgysw.com', :target => '_blank' do 
+                -#
+                  = image_tag "wssw.png" 
+                %p.text-muted
+                  汶上公用水务有限公司 
+      .col-9
+        .row.mb-5
+          .col-sm-12
+            = image_tag 'shuiwudandang.png', :class => 'img-fluid'
+        .row.flex-box.flex-wrap-wrap
+          - if !@showrooms.blank?
+            - @showrooms.each do |room|
+              .col-sm-3.flex-box.flex-justify-center.flex-align-center
+                = link_to room.photo_url, :class => 'fancybox' do
+                  = image_tag room.photo_url, :class => "img-fluid"
+            
+%section.diyi-section.py-3.bg-white
   .container
     .row
       .col-md-12
@@ -239,5 +264,12 @@
               %a{:href => "#"}
                 = image_tag @home_content.by5_url
 
-%section.py-5.mt-5
-  = render "layouts/components/home_carousel"
+#newModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "newModalLabel", :tabindex => "-1"}
+  .modal-dialog.modal-xl.modal-dialog-centered
+    .modal-content
+      -#
+        .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} x 
+      .modal-body
+        = render 'home/map'
