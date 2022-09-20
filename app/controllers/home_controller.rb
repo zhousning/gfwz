@@ -16,6 +16,21 @@ class HomeController < ApplicationController
     end
   end
   
+  def index0
+    @carousels = Carousel.all
+    @showrooms = Showroom.all
+    @home_setting = HomeSetting.last
+    @diyi, @dangjian, @dier, @disan = [], [], [], []
+    @home_content = HomeContent.first
+
+    if @home_setting
+      @diyi = get_sections(@home_setting.diyi) 
+      @dangjian = get_sections(@home_setting.dangjian) 
+      @dier = get_sections(@home_setting.dier) 
+      @disan = get_sections(@home_setting.disan) 
+    end
+  end
+  
   private
     def get_sections(section) 
       obj = []

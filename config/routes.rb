@@ -38,6 +38,10 @@ Rails.application.routes.draw do
 
   #resources :roles
 
+  resources :home do
+    get :index0, :on => :collection
+  end
+
   resources :spiders do
     get :start, :on => :member
   end
