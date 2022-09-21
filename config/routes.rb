@@ -51,13 +51,13 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/mysbcnmsidekiq'
 
   #模板
-  #resources :properties
-  #resources :nests 
-  #resources :domains 
+  resources :properties
+  resources :nests 
+  resources :domains 
 
-  #resources :templates do
-  #  get :produce, :on => :member
-  #end
+  resources :templates do
+    get :produce, :on => :member
+  end
 
   resources :frsts, :except => [:show] do
     get :query_device, :on => :collection

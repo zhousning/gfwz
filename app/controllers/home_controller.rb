@@ -1,5 +1,11 @@
 class HomeController < ApplicationController
-  layout "application_home"
+  #layout "application_home"
+  #
+  #layout :determine_layout
+  #private
+  #def determine_layout
+  #( rand(100)%2 == 0 )? "event_open" : "event_closed"
+  #end
 
   def index
     @carousels = Carousel.all
@@ -14,23 +20,10 @@ class HomeController < ApplicationController
       @dier = get_sections(@home_setting.dier) 
       @disan = get_sections(@home_setting.disan) 
     end
+    render :layout => "application_zchome"
   end
   
-  def index0
-    @carousels = Carousel.all
-    @showrooms = Showroom.all
-    @home_setting = HomeSetting.last
-    @diyi, @dangjian, @dier, @disan = [], [], [], []
-    @home_content = HomeContent.first
 
-    if @home_setting
-      @diyi = get_sections(@home_setting.diyi) 
-      @dangjian = get_sections(@home_setting.dangjian) 
-      @dier = get_sections(@home_setting.dier) 
-      @disan = get_sections(@home_setting.disan) 
-    end
-  end
-  
   private
     def get_sections(section) 
       obj = []
@@ -48,6 +41,7 @@ class HomeController < ApplicationController
             articles << {
               :id => article.id,
               :title => article.title,
+              :content => article.content.gsub(/(<.+?>)|(<\/.+?>)/, ""),
               :pdt_date => article.pdt_date.strftime('%Y-%m-%d')
             }
           end

@@ -130,4 +130,15 @@ module DayPdtRptsHelper
     title
   end
 
+  def zchome_setion_background(index)
+    str = ''
+    if index == 0
+      str = 'bg-b2882d'
+    elsif index == 1 
+      str = 'bg-255481'
+    elsif index == 2 
+      str = 'bg-228466'
+    end
+  end
+
 end  
