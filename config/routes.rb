@@ -80,6 +80,7 @@ Rails.application.routes.draw do
   resources :wxtools, :except => [:show]   
   resources :home_contents, :only => [:edit, :update] 
 
-  #resources :flower
+  resources :shutters 
+  resources :flower
 
 end

@@ -132,13 +132,14 @@ module DayPdtRptsHelper
 
   def zchome_setion_background(index)
     str = ''
-    if index == 0
+    if index == 0 || index == 3 || index == 6 
       str = 'bg-b2882d'
-    elsif index == 1 
+    elsif index == 1 || index == 4 || index == 7 
       str = 'bg-255481'
-    elsif index == 2 
+    elsif index == 2 || index == 5 || index == 8  
       str = 'bg-228466'
     end
+    str
   end
 
 end  
