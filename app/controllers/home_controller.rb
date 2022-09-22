@@ -8,8 +8,11 @@ class HomeController < ApplicationController
   #end
 
   def index
+    @question = Question.new
+
     @carousels = Carousel.all
     @showrooms = Showroom.all
+    @shutters = Shutter.all
     @home_setting = HomeSetting.last
     @diyi, @dangjian, @dier, @disan = [], [], [], []
     @home_content = HomeContent.first

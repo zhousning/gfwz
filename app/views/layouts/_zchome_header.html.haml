@@ -19,7 +19,6 @@
         %li.nav-item.py-2.show-on-hover
           %a.nav-link.text-dark{:href => root_path}
             首页
-
         - Frst.order('sequence').each do |frst|
           %li.nav-item.py-2.show-on-hover.position-relative
             %a.nav-link.text-dark{:href => "javascript:void(0)"}
@@ -48,3 +47,6 @@
                         = image_tag secd.header_url
                       %p.text-dark.mt-2
                         = secd.name
+        %li.nav-item.py-2.show-on-hover
+          = link_to Setting.questions.label, consults_path, {:class => 'nav-link text-dark'}
+

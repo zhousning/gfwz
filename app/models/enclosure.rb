@@ -3,6 +3,8 @@ class Enclosure < ActiveRecord::Base
 
   belongs_to :home_setting
   belongs_to :home_content
+  belongs_to :question
+  belongs_to :answer
 end
 
 

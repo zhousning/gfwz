@@ -513,6 +513,13 @@ development:
     title: 标题
     link: 链接
     sequence: 顺序
+  questions:
+    label: 留言反馈
+    title: 标题
+    content: 留言反馈内容
+  answers:
+    label: 回复
+    content: 回复
 test: 
 production:
   reports: *1

@@ -81,6 +81,12 @@ Rails.application.routes.draw do
   resources :home_contents, :only => [:edit, :update] 
 
   resources :shutters 
+  resources :questions do
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
+  resources :answers
+  resources :consults, :only => [:index, :create]
   resources :flower
 
 end
