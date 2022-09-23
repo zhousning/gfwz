@@ -1,13 +1,17 @@
 - provide(:title, @frst.name)
 
 .container.mt-3.py-3
+  .row.my-3
+    .col-12.px-0
+      - if @frst.header  
+        = image_tag @frst.header_url, :class => 'w-100'
   .row
-    #sidebar-list.col-12.col-md-3.min-height-info.shadow{:style => "background: url('#{@frst.sidebar.blank? ? image_url('sidebar-bg.jpg') : @frst.sidebar_url}') no-repeat;background-size: cover;"}
+    #sidebar-list.col-12.col-md-3.min-height-info{:style => "background: url('#{@frst.sidebar.blank? ? image_url('sidebar-bg.jpg') : @frst.sidebar_url}') no-repeat;background-size: cover;"}
       %ul.list-group.list-group-flush.pt-3
         - @secds.each do |secd|
           = link_to secd.name, list_secd_newspapers_path(idencode(secd.id)), :class => "list-group-item list-group-item-action hvr-sweep-to-right"
 
-    #sidebar-content.ml-4.col-12.col-md-8.bg-white.min-height-900.pt-3.shadow
+    #sidebar-content.col-12.col-md-9.bg-white.min-height-900.pt-3
       %ul.list-group.list-group-flush
         - @articles.each_with_index do |article, index|
           = link_to info_secd_newspaper_path(idencode(@secd.id), idencode(article.id)), :class => "list-group-item list-group-item-action" do

@@ -24,3 +24,15 @@
 -
   controller: wxtools_controller
   actions: [index, new, create, edit, update, destroy]
+-
+  controller: matters_controller
+  actions: [index, show, new, create, edit, update, destroy]
+-
+  controller: questions_controller
+  actions: [index, edit, update, destroy]
+-
+  controller: engines_controller
+  actions: [edit, update]
+-
+  controller: shutters_controller
+  actions: [index, show, create, edit, update, destroy]

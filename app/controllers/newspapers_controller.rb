@@ -2,6 +2,7 @@ class NewspapersController < ApplicationController
   layout :determine_layout
 
   def list
+    @engine = Engine.first
     @secd = Secd.find(iddecode(params[:secd_id]))
     @frst = @secd.frst
     @secds = @frst.secds
@@ -9,6 +10,7 @@ class NewspapersController < ApplicationController
   end
    
   def info 
+    @engine = Engine.first
     @secd = Secd.find(iddecode(params[:secd_id]))
     @frst = @secd.frst
     @secds = @frst.secds

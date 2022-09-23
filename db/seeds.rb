@@ -26,19 +26,10 @@ AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email
 @role_fct = Role.where(:name => Setting.roles.role_fct).first
 @role_grp = Role.where(:name => Setting.roles.role_grp).first
 
-@role_article    = Role.where(:name => Setting.roles.role_article).first
-@role_carousel    = Role.where(:name => Setting.roles.role_carousel).first
-@role_showroom    = Role.where(:name => Setting.roles.role_showroom).first
-@role_homectn    = Role.where(:name => Setting.roles.role_homectn).first
-@role_frst    = Role.where(:name => Setting.roles.role_frst).first
-@role_homeset    = Role.where(:name => Setting.roles.role_homeset).first
-@role_spider    = Role.where(:name => Setting.roles.role_spider).first
-@role_wxtool    = Role.where(:name => Setting.roles.role_wxtool).first
-
 ##厂区管理者
-@fctmgn = [@role_fct, @role_article, @role_carousel, @role_showroom, @role_homectn]
+@fctmgn = [@role_fct]
 ##集团管理者
-@grp_mgn = [@role_grp, @role_article, @role_carousel, @role_showroom, @role_homectn, @role_frst, @role_homeset,  @role_spider,  @role_wxtool]
+@grp_mgn = [@role_grp]
 
 @gscmpy = Company.create!(:area => "嘉祥县", :name => "嘉祥水务")
 @gcfct = Factory.create!(:area => "嘉祥县", :name => "嘉祥水务", :company => @gsfct, :lnt => 116.131779, :lat => 35.765957, :design => 20000)

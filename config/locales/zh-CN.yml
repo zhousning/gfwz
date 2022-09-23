@@ -30,6 +30,8 @@ zh-CN:
       site_title: "嘉祥公用水务有限公司"
     application_no_header:
       site_title: "嘉祥公用水务有限公司"
+    application_zchome:
+      site_title: "嘉祥公用水务有限公司"
   views:
       pagination:
         first: "首页"
@@ -306,3 +308,63 @@ zh-CN:
       title: 文章列表  
     info:
       title: 文章
+  consults:
+    index:
+      title: 留言反馈列表  
+    new:
+      title: 新建留言反馈
+    create:
+      title: 新建留言反馈
+    edit:
+      title: 编辑留言反馈
+    update:
+      title: 编辑留言反馈
+    show:
+      title: 留言反馈详情 
+    destroy:
+      title: 删除留言反馈 
+  engines:
+    index:
+      title: 引擎配置列表  
+    new:
+      title: 新建引擎配置
+    create:
+      title: 新建引擎配置
+    edit:
+      title: 编辑引擎配置
+    update:
+      title: 编辑引擎配置
+    show:
+      title: 引擎配置详情 
+    destroy:
+      title: 删除引擎配置 
+  matters:
+    index:
+      title: 办事项目列表  
+    new:
+      title: 新建办事项目
+    create:
+      title: 新建办事项目
+    edit:
+      title: 编辑办事项目
+    update:
+      title: 编辑办事项目
+    show:
+      title: 办事项目详情 
+    destroy:
+      title: 删除办事项目 
+  shutters:
+    index:
+      title: 小轮播列表  
+    new:
+      title: 新建小轮播
+    create:
+      title: 新建小轮播
+    edit:
+      title: 编辑小轮播
+    update:
+      title: 编辑小轮播
+    show:
+      title: 小轮播详情 
+    destroy:
+      title: 删除小轮播 

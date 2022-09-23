@@ -1,5 +1,8 @@
 class ConsultsController < ApplicationController
+  layout :determine_layout
+
   def index
+    @engine = Engine.first
     @question = Question.new
     @questions = Question.order('created_at DESC').all.page( params[:page]).per( Setting.systems.per_page )
   end
@@ -20,6 +23,11 @@ class ConsultsController < ApplicationController
   end
    
   private
+    def determine_layout
+      @engine = Engine.first
+      engine_template(@engine) 
+    end
+
     def question_params
       params.require(:question).permit( :title, :content)
     end

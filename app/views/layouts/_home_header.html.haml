@@ -44,3 +44,6 @@
                             = image_tag secd.header_url
                           %p.text-dark.mt-2
                             = secd.name
+        - if @engine.consult
+          %li.nav-item.py-2.show-on-hover
+            = link_to Setting.questions.label, consults_path, {:class => 'nav-link text-white'}
