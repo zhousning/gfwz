@@ -126,4 +126,18 @@ class ApplicationController < ActionController::Base
       end
 
     end
+
+    def engine_template(engine) 
+      str = ''
+      if engine.template == Setting.engines.swjt1tmpt
+        str = 'application_home'
+      elsif engine.template == Setting.engines.swjt2tmpt
+        str = 'application_home'
+      elsif engine.template == Setting.engines.zctmpt
+        str = 'application_zchome'
+      elsif engine.template == Setting.engines.jxtmpt
+        str = 'application_home'
+      end
+      str
+    end
 end

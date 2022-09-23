@@ -54,6 +54,8 @@ grp_mgn = User.create!(:phone => "9116688", :password => "swjt911", :password_co
 
 
 HomeContent.create
+HomeSetting.create
+
 @spider1 = Spider.create("doc_save"=>"false", "doc_parse"=>"true", "cookie"=>"", "agent"=>"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36", "content_type"=>"application/x-www-form-urlencoded")
 Selector.create("name"=>".album__list-item.js_album_item.js_wx_tap_highlight.wx_tap_cell", "title"=>"data-link", "category"=>"1", "file"=>"false", :spider => @spider1)
 @spider2 = Spider.create("doc_save"=>"false", "doc_parse"=>"true", "cookie"=>"", "agent"=>"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36", "content_type"=>"application/x-www-form-urlencoded")
@@ -63,3 +65,11 @@ Selector.create("name"=>".rich_pages.wxw-img", "title"=>"data-src", "category"=>
 @spiderdt = Spider.create("link"=>"https://www.dtdjzx.gov.cn/", "page"=>"", "doc_save"=>"false", "doc_parse"=>"true", "cookie"=>"", "agent"=>"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/63.0.3239.84 Chrome/63.0.3239.84 Safari/537.36", "content_type"=>"application/x-www-form-urlencoded")
 Selector.create("name"=>".right.topline a", "title"=>"href", "category"=>"1", "file"=>"false", :spider => @spiderdt)
 Selector.create("name"=>".right.topline a p.h1", "title"=>"内容", "category"=>"0", "file"=>"false", :spider => @spiderdt)
+
+Matter.create(:title => "水费查询", :background => "ff571d", :icon => "search")
+Matter.create(:title => "网上缴费", :background => "00aad9", :icon => "credit-card")
+Matter.create(:title => "业务办理指南", :background => "3a86fa", :icon => "envelope-open-o")
+Matter.create(:title => "网上报装申请", :background => "00a1b4", :icon => "desktop")
+
+
+Engine.create(:template => Setting.engines.zctmpt, :consult => true, :des1 => '地址：邹城市太平西路1333号 邮编：273500', :des2 => '邹城市自来水有限公司丨鲁ICP备17022608号-1 鲁公网安备37088302000254号')

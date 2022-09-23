@@ -5,7 +5,7 @@
         .swiper-slide
           = link_to room.photo_url  do
             = image_tag room.photo_url
-            %p.mt-3.text-dark
+            %small.text-secondary
               = room.title
   -#
     .swiper-pagination
@@ -14,8 +14,8 @@
 
 <script>
 var swiper = new Swiper("#slide-swiper .swiper-container", {
-slidesPerView: 4,
-spaceBetween: 30,
+slidesPerView: 6,
+spaceBetween: 5,
 loop: true,
 loopFillGroupWithBlank: true,
 autoplay: {

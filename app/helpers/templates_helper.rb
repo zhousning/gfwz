@@ -14,4 +14,41 @@ module TemplatesHelper
   def options_for_type
     [["has_one", "has_one"], ["has_many", "has_many"], ["belongs_to", "belongs_to"]]
   end                                            
+
+  def options_for_template
+    [
+      [Setting.engines.swjt1tmpt, Setting.engines.swjt1tmpt],
+      [Setting.engines.swjt2tmpt, Setting.engines.swjt2tmpt],
+      [Setting.engines.zctmpt, Setting.engines.zctmpt],
+      [Setting.engines.jxtmpt, Setting.engines.jxtmpt]
+    ]
+  end
+
+  def engine_template(engine) 
+    str = ''
+    if engine.template == Setting.engines.swjt1tmpt
+      str = 'application_home'
+    elsif engine.template == Setting.engines.swjt2tmpt
+      str = 'application_home'
+    elsif engine.template == Setting.engines.zctmpt
+      str = 'application_zchome'
+    elsif engine.template == Setting.engines.jxtmpt
+      str = 'application_home'
+    end
+    str
+  end
+
+  def determine_home_index_template(engine)
+    str = ''
+    if engine.template == Setting.engines.swjt1tmpt
+      str = 'home/swjt1index'
+    elsif engine.template == Setting.engines.swjt2tmpt
+      str = 'home/swjt1index'
+    elsif engine.template == Setting.engines.zctmpt
+      str = 'home/zcindex'
+    elsif engine.template == Setting.engines.jxtmpt
+      str = 'home/jxindex'
+    end
+    str
+  end
 end  

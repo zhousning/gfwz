@@ -1,5 +1,5 @@
 class NewspapersController < ApplicationController
-  layout "application_home"
+  layout :determine_layout
 
   def list
     @secd = Secd.find(iddecode(params[:secd_id]))
@@ -25,5 +25,10 @@ class NewspapersController < ApplicationController
     end
   end
   
+  private
+    def determine_layout
+      @engine = Engine.first
+      engine_template(@engine) 
+    end
   
 end

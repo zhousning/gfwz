@@ -1,15 +1,9 @@
 class HomeController < ApplicationController
-  #layout "application_home"
-  #
-  #layout :determine_layout
-  #private
-  #def determine_layout
-  #( rand(100)%2 == 0 )? "event_open" : "event_closed"
-  #end
+  layout :determine_layout
 
   def index
-    @question = Question.new
-
+    @engine = Engine.first
+    @matters = Matter.all
     @carousels = Carousel.all
     @showrooms = Showroom.all
     @shutters = Shutter.all
@@ -23,11 +17,16 @@ class HomeController < ApplicationController
       @dier = get_sections(@home_setting.dier) 
       @disan = get_sections(@home_setting.disan) 
     end
-    render :layout => "application_zchome"
+
   end
   
 
   private
+    def determine_layout
+      @engine = Engine.first
+      engine_template(@engine) 
+    end
+
     def get_sections(section) 
       obj = []
       unless section.blank?

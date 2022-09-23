@@ -10,23 +10,23 @@ class HomeSettingsController < ApplicationController
   end
    
    
-  def new
-    @secds = Secd.all
-    @home_setting = HomeSetting.new
-    
-  end
-   
+  #def new
+  #  @secds = Secd.all
+  #  @home_setting = HomeSetting.new
+  #  
+  #end
+  # 
 
-   
-  def create
-    @home_setting = HomeSetting.new(home_setting_params)
-     
-    if @home_setting.save
-      redirect_to :action => :index
-    else
-      render :new
-    end
-  end
+  # 
+  #def create
+  #  @home_setting = HomeSetting.new(home_setting_params)
+  #   
+  #  if @home_setting.save
+  #    redirect_to :action => :index
+  #  else
+  #    render :new
+  #  end
+  #end
    
 
    
@@ -52,13 +52,13 @@ class HomeSettingsController < ApplicationController
    
 
    
-  def destroy
-   
-    @home_setting = HomeSetting.find(iddecode(params[:id]))
-   
-    @home_setting.destroy
-    redirect_to :action => :index
-  end
+  #def destroy
+  # 
+  #  @home_setting = HomeSetting.find(iddecode(params[:id]))
+  # 
+  #  @home_setting.destroy
+  #  redirect_to :action => :index
+  #end
    
 
   

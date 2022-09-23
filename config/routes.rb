@@ -87,6 +87,11 @@ Rails.application.routes.draw do
   end
   resources :answers
   resources :consults, :only => [:index, :create]
+  resources :matters
+  resources :engines do
+    get :download_append, :on => :member
+    get :query_all, :on => :collection
+  end
   resources :flower
 
 end

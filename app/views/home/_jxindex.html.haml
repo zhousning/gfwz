@@ -60,34 +60,17 @@
 %section.my-3
   .container.py-2.bg-white
     .row
-      .col-3
-        .border.text-center.pt-4.mb-2.py-2.bg-1e3b7a
-          %a{:href => "#"}
-            %p.mb-3
-              %i.fa.fa-group.fa-3x.text-white
-            %p.mb-3.text-white.font-weight-bold
-              我的用水
-      .col-3
-        .border.text-center.pt-4.py-2.bg-ff7900
-          %a{:href => "#"}
-            %p.mb-3
-              %i.fa.fa-mobile.fa-3x.text-white
-            %p.mb-3.text-white.font-weight-bold
-              用户报装
-      .col-3
-        .border.text-center.pt-4.py-2.bg-8d5870
-          %a{:href => "#", "data-target" => "#newModal", "data-toggle" => "modal", :type => "button" }
-            %p.mb-3
-              %i.fa.fa-map.fa-3x.text-white
-            %p.mb-3.text-white.font-weight-bold
-              服务网点
-      .col-3
-        .border.text-center.pt-4.py-2.bg-006c71
-          %a{:href => "#"}
-            %p.mb-3
-              %i.fa.fa-list.fa-3x.text-white
-            %p.mb-3.text-white.font-weight-bold
-              办理指南
+      .col-12.d-flex.justify-content-between.align-items-center
+        - @matters.each do |matter|
+          .rounded{:style => "background: ##{matter.background}"}
+            %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => matter.link}
+              %i.fa.fa-2x.mr-3{:class => "fa-#{matter.icon}"}
+              = matter.title
+        .rounded.bg-648e50
+          %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => "#", "data-target" => "#newModal", "data-toggle" => "modal", :type => "button" }
+            %i.fa.fa-map-o.fa-2x.mr-3
+            服务网点
+            
 
 
 %section.my-3

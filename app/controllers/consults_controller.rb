@@ -7,11 +7,12 @@ class ConsultsController < ApplicationController
    
   def create
     ip = request.remote_ip
-    questions = Question.where(:ip => ip)
+    questions = Question.where(:ip => ip, :search_date => Date.today)
 
     if questions.size < 2 
       @question = Question.new(question_params)
       @question.ip = ip 
+      @question.search_date = Date.today 
       @question.save
     end
 

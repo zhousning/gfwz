@@ -8,6 +8,8 @@ class CreateQuestions < ActiveRecord::Migration
     
       t.string :ip,  null: false, default: Setting.systems.default_str
 
+      t.date :search_date
+
     
 
     

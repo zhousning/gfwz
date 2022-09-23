@@ -44,32 +44,3 @@
                             = image_tag secd.header_url
                           %p.text-dark.mt-2
                             = secd.name
-          -#
-            = link_to  frst.name,nil, :class => "nav-link text-white", :id => "navbarScrollingDropdown" + frst.id.to_s, :role => "button", :'data-toggle' => "dropdown", :'aria-expanded' => "false"
-              
-            %ul{:class => "dropdown-menu rounded-0", :'aria-labelledby' => "navbarScrollingDropdown" + frst.id.to_s}
-              - frst.secds.each do |secd|
-                %li
-                  = link_to nil, secd.name, :class => 'dropdown-item'
-                
-              
-
-      -#
-        %li.nav-item.active
-          = link_to labs_path, :class => "nav-link  " do
-            = Setting.labs.tag
-        %li.nav-item.active
-          = link_to cstr_reports_path, :class => "nav-link  " do
-            = Setting.reports.tag
-        %li.nav-item.active
-          = link_to activities_path, :class => "nav-link  " do
-            = Setting.activities.tag
-        %li.nav-item.active
-          = link_to notices_path, :class => "nav-link  " do
-            = Setting.notices.tag
-        %li.nav-item.active
-          = link_to infos_path, :class => "nav-link  " do
-            = Setting.infos.tag
-        %li.nav-item.active
-          = link_to manages_path, :class => "nav-link  " do
-            = Setting.manages.tag

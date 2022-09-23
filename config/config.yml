@@ -414,7 +414,7 @@ defaults:
     wx_user_id: 签到审核人
     device_id: 站点
   frsts: &42
-    label: 类目管理
+    label: 导航类目
     name: 名称
     sequence: 排序
     index_page: 列表页显示
@@ -520,6 +520,25 @@ development:
   answers:
     label: 回复
     content: 回复
+  matters:
+    label: 办事项目
+    title: 标题
+    background: 背景色
+    link: 链接
+    sequence: 顺序
+    icon: 图标
+  engines:
+    label: 引擎配置
+    template: 模板
+    consult: 留言反馈
+    point: 定位点
+    des1: 公司地址 
+    des2: icp备案信息 
+    des3: 备用3
+    swjt1tmpt: 水务集团风格1
+    swjt2tmpt: 水务集团风格2
+    zctmpt: 邹城水务风格
+    jxtmpt: 嘉祥水务风格
 test: 
 production:
   reports: *1
