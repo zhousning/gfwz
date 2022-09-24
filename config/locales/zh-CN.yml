@@ -19,19 +19,19 @@ zh-CN:
 
   layouts:
     application:
-      site_title: "嘉祥公用水务有限公司"
+      site_title: "邹城公用水务有限公司"
     application_control:
-      site_title: "嘉祥公用水务有限公司"
+      site_title: "邹城公用水务有限公司"
     application_control_map:
-      site_title: "嘉祥公用水务有限公司"
+      site_title: "邹城公用水务有限公司"
     application_mobile:
-      site_title: "嘉祥公用水务有限公司"
+      site_title: "邹城公用水务有限公司"
     application_home:
-      site_title: "嘉祥公用水务有限公司"
+      site_title: "邹城公用水务有限公司"
     application_no_header:
-      site_title: "嘉祥公用水务有限公司"
+      site_title: "邹城公用水务有限公司"
     application_zchome:
-      site_title: "嘉祥公用水务有限公司"
+      site_title: "邹城公用水务有限公司"
   views:
       pagination:
         first: "首页"
@@ -139,7 +139,7 @@ zh-CN:
   trees:
     index:
       title:
-        嘉祥公用水务有限公司
+        邹城公用水务有限公司
   authorities:
     roles:
       manage:

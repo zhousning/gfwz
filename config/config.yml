@@ -543,7 +543,7 @@ development:
     swjt1tmpt: 水务集团风格1
     swjt2tmpt: 水务集团风格2
     zctmpt: 邹城水务风格
-    jxtmpt: 嘉祥水务风格
+    jxtmpt: 邹城水务风格
 test: 
 production:
   reports: *1
