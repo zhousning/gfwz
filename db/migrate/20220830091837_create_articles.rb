@@ -7,6 +7,8 @@ class CreateArticles < ActiveRecord::Migration
       t.date :pdt_date
     
       t.text :content
+
+      t.text :raw_content
     
       t.text :wxlink
 
