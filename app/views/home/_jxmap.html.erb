@@ -10,7 +10,6 @@
   </head>
   
   <body>
-    <!--百度地图容器-->
     <div style="width:100%;height:550px;border:#ccc solid 1px;font-size:12px" id="map"></div>
   </body>
   <script type="text/javascript">
@@ -23,7 +22,8 @@
     }
     function createMap(){ 
       map = new BMap.Map("map"); 
-      map.centerAndZoom(new BMap.Point(116.95128,35.433532),14);
+      map.centerAndZoom(new BMap.Point(116.340604,35.420031),16);
+      
     }
     function setMapEvent(){
       map.enableScrollWheelZoom();
@@ -37,7 +37,9 @@
       });
     }
     function addMapOverlay(){
-      var markers = <%= raw @markers %> 
+      var markers = [
+        {content:"嘉祥县冠亚上城C区郎琴郡东南门旁",title:"嘉祥水务营业厅",imageOffset: {width:0,height:3},position:{lat:35.411578,lng:116.352448}},
+      ];
       for(var index = 0; index < markers.length; index++ ){
         var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
         var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
@@ -60,7 +62,7 @@
       var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
       scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
       map.addControl(scaleControl);
-      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:0});
       map.addControl(navControl);
       var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
       map.addControl(overviewControl);

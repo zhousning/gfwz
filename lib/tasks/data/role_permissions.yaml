@@ -61,3 +61,6 @@
     -
       controller: engines_controller
       actions: [edit, update]
+    -
+      controller: positions_controller
+      actions: [index, show, create, edit, update, destroy]

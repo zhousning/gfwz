@@ -368,3 +368,33 @@ zh-CN:
       title: 小轮播详情 
     destroy:
       title: 删除小轮播 
+  positions:
+    index:
+      title: 地图点位列表  
+    new:
+      title: 新建地图点位
+    create:
+      title: 新建地图点位
+    edit:
+      title: 编辑地图点位
+    update:
+      title: 编辑地图点位
+    show:
+      title: 地图点位详情 
+    destroy:
+      title: 删除地图点位 
+  questions:
+    index:
+      title: 留言反馈列表  
+    new:
+      title: 新建留言反馈
+    create:
+      title: 新建留言反馈
+    edit:
+      title: 编辑留言反馈
+    update:
+      title: 编辑留言反馈
+    show:
+      title: 留言反馈详情 
+    destroy:
+      title: 删除留言反馈 

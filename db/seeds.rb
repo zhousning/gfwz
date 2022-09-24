@@ -64,3 +64,7 @@ Matter.create(:title => "网上报装申请", :background => "00a1b4", :icon => 
 
 
 Engine.create(:template => Setting.engines.zctmpt, :consult => true, :des1 => '地址：邹城市太平西路1333号 邮编：273500', :des2 => '邹城市自来水有限公司丨鲁ICP备17022608号-1 鲁公网安备37088302000254号')
+
+Position.create(content:"邹城市为民服务中心二楼28号自来水服务窗口，电话0537-3267507", title:"自来水政务中心服务窗口", lat:35.410845, lnt:117.013763)
+Position.create(content:"邹城市凫山南路邹城公用水务客户服务中心，电话：0537-5308688",title:"邹城公用水务客户服务中心", lat:35.399713,lnt:116.957151)
+Position.create(content:"邹城市太平西路1333号邹城公用水务客户服务中心，电话：0537-5255590",title:"邹城公用水务客户服务中心", lat:35.410901,lnt:116.978112)

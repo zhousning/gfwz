@@ -11,6 +11,21 @@ class HomeController < ApplicationController
     @diyi, @dangjian, @dier, @disan = [], [], [], []
     @home_content = HomeContent.first
 
+    @positions = Position.all
+    markers = []
+    @positions.each do |pos|
+      markers << {
+        'title': pos.title,
+        'content': pos.content,
+        'position': {
+          'lat': pos.lat,
+          'lng': pos.lnt
+        },
+        'imageOffset': {'width': 0, 'height': 3}
+      }
+    end
+    @markers = markers.to_json
+
     if @home_setting
       @diyi = get_sections(@home_setting.diyi) 
       @dangjian = get_sections(@home_setting.dangjian) 

@@ -36,3 +36,6 @@
 -
   controller: shutters_controller
   actions: [index, show, create, edit, update, destroy]
+-
+  controller: positions_controller
+  actions: [index, show, create, edit, update, destroy]

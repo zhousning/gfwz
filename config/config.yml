@@ -537,13 +537,24 @@ development:
     template: 模板
     consult: 留言反馈
     point: 定位点
-    des1: 公司地址 
-    des2: icp备案信息 
+    des1: 公司地址
+    des2: icp备案信息
     des3: 备用3
     swjt1tmpt: 水务集团风格1
     swjt2tmpt: 水务集团风格2
     zctmpt: 邹城水务风格
     jxtmpt: 邹城水务风格
+  positions:
+    label: 地图点位
+    title: 标题
+    content: 内容
+    lnt: 经度
+    lat: 纬度
+    center_lnt: 中心点经度
+    center_lat: 中心点纬度
+    des1: 备用1
+    des2: 备用2
+    des3: 备用3
 test: 
 production:
   reports: *1
