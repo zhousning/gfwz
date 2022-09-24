@@ -55,10 +55,17 @@ class HomeController < ApplicationController
           record = secds.detect {|secd| secd.id.to_s == id}
           articles = []
           record.articles.limit(10).order('pdt_date DESC').each do |article|
+            content = article.content
+            content.gsub!(/\s/, "")
+            content.gsub!(/\/\//, "")
+            content.gsub!(/<.+?>/, "")
+            content.gsub!(/<\/.+?>/, "")
+            content.gsub!("点击蓝字关注我们", "")
+            
             articles << {
               :id => article.id,
               :title => article.title,
-              :content => article.content.gsub(/(<.+?>)|(<\/.+?>)/, ""),
+              :content => content[0..100],
               :pdt_date => article.pdt_date.strftime('%Y-%m-%d')
             }
           end

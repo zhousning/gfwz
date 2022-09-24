@@ -25,12 +25,13 @@
                 %table.w-100.table-bordered.day-pdt-table
                   %tbody
                     
-                    %tr
+                    -#
                       %td.p-2.text-center
                         = f.label Setting.wxtools.name, :class => "text-center"
                       %td.p-2.text-center
                         = f.text_field :name, :class => "form-control" , :required => true
                       
+                    %tr
                       %td.p-2.text-center
                         = f.label Setting.wxtools.secd_id, :class => "text-center"
                       %td.p-2.text-center

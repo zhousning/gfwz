@@ -41,7 +41,7 @@ all_factories = Factory.all
 user.factories << all_factories
 
 #集团管理
-grp_mgn = User.create!(:phone => "9116688", :password => "swjt911", :password_confirmation => "swjt911", :name => "水务集团管理者", :roles => @grp_mgn, :factories => all_factories)
+grp_mgn = User.create!(:phone => "9116688", :password => "zcsw911", :password_confirmation => "zcsw911", :name => "邹城水务管理者", :roles => @grp_mgn, :factories => all_factories)
 
 
 HomeContent.create

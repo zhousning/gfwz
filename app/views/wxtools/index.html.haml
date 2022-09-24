@@ -30,14 +30,15 @@
                   %tr
                     %th{:scope => "col", :'data-field' => "id"} #
                   
-                    %th{:scope => "col", :'data-field' => "name"}
+                    -#
+                      %th{:scope => "col", :'data-field' => "name"}
                       = Setting.wxtools.name
+                    %th{:scope => "col", :'data-field' => "secd_id"}
+                      = Setting.wxtools.secd_id
+                  
                   
                     %th{:scope => "col", :'data-field' => "link"}
                       = Setting.wxtools.link
-                  
-                    %th{:scope => "col", :'data-field' => "secd_id"}
-                      = Setting.wxtools.secd_id
                   
                     -#
                       %th{:scope => "col", :'data-field' => "desc"}
@@ -50,12 +51,13 @@
                       %td{:scope => "row"}
                         = index+1
                     
-                      %td
+                      -#
+                        %td
                         = wxtool.name
                       %td
-                        = wxtool.link
-                      %td
                         = Secd.find(wxtool.secd_id).name
+                      %td
+                        = wxtool.link
                       -#
                         %td
                         = wxtool.desc
