@@ -142,4 +142,12 @@ module DayPdtRptsHelper
     str
   end
 
+  def options_for_secds
+    [
+      [Setting.secds.sindex, Setting.secds.sindex],
+      [Setting.secds.sshow, Setting.secds.sshow],
+      [Setting.secds.slink, Setting.secds.slink]
+    ]
+  end
+
 end  

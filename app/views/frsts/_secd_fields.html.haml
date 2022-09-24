@@ -23,11 +23,23 @@
                   = f.text_field :svg, :class => "form-control", :required => true 
                 
               
+              %tr
                 %td.p-2.text-center
                   = f.label Setting.secds.sequence, :class => "text-center"
                 %td.p-2.text-center
                   = f.number_field :sequence, :class => "form-control", :required => true 
+                %td.p-2.text-center
+                  = f.label Setting.secds.showstyle, :class => "text-center"
+                %td.p-2.text-center
+                  = f.select :showstyle, options_for_secds, {:include_blank=>false}, {:class => "form-control"}
 
+              %tr
+                %td.p-2.text-center
+                  = f.label Setting.secds.link, :class => "text-center"
+                %td.p-2.text-center{:colspan => 3}
+                  = f.text_field :link, :class => "form-control"
+
+              -#
                 %td.p-2.text-center
                   = f.label Setting.secds.index_page, :class => "text-center"
                 %td.p-2.text-center

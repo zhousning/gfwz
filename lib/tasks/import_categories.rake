@@ -18,13 +18,13 @@ namespace 'db' do
       if !category[1].nil?
         category[1].each_with_index do |c, index|
           secd = c[0].to_s
-          index_page = c[1]
+          showstyle = c[1]
           svg = c[2]
           @secd = Secd.find_by_name(secd)
           if !@secd
-            @secd = Secd.create(:name => secd, :frst => @frst, :sequence => index, :index_page => index_page, :svg => svg)
+            @secd = Secd.create(:name => secd, :frst => @frst, :sequence => index, :showstyle => showstyle, :svg => svg)
           else
-            @secd.update_attributes(:frst => @frst, :sequence => index, :index_page => index_page, :svg => svg)
+            @secd.update_attributes(:frst => @frst, :sequence => index, :showstyle => showstyle, :svg => svg)
           end
         end
       end

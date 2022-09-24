@@ -34,7 +34,8 @@
                     %th{:scope => "col", :'data-field' => "sequence"}
                       = Setting.frsts.sequence
                   
-                    %th{:scope => "col", :'data-field' => "index_page"}
+                    -#
+                      %th{:scope => "col", :'data-field' => "index_page"}
                       = Setting.frsts.index_page
                   
                     -#
@@ -55,7 +56,8 @@
                           = secd.name + ', '
                       %td
                         = frst.sequence
-                      %td
+                      -#
+                        %td
                         = frst.index_page
                       -#
                         %td

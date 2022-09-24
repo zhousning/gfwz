@@ -31,10 +31,10 @@ AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email
 ##集团管理者
 @grp_mgn = [@role_grp]
 
-@gscmpy = Company.create!(:area => "嘉祥县", :name => "嘉祥水务")
-@gcfct = Factory.create!(:area => "嘉祥县", :name => "嘉祥水务", :company => @gsfct, :lnt => 116.131779, :lat => 35.765957, :design => 20000)
+@gscmpy = Company.create!(:area => "邹城市", :name => "邹城水务")
+@gcfct = Factory.create!(:area => "邹城市", :name => "邹城水务", :company => @gscmpy, :lnt => 116.131779, :lat => 35.765957, :design => 20000)
 
-User.create!(:phone => "053701016688", :password => "jxsw7799", :password_confirmation => "jxsw7799", :name => "嘉祥水务", :roles => @fctmgn,  :factories => [@gcfct])
+User.create!(:phone => "053701016688", :password => "zcgysw6688", :password_confirmation => "zcgysw6688", :name => "邹城水务", :roles => @fctmgn,  :factories => [@gcfct])
 
 
 all_factories = Factory.all

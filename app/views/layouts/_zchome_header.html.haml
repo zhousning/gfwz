@@ -26,25 +26,24 @@
             .dropdown-menu.mt-0.border-0.rounded-0.py-0
               - frst.secds.order('sequence DESC').each do |secd|
                 .col.box.px-0
-                  - if secd.index_page
+                  - if secd.showstyle == Setting.secds.sindex
                     = link_to list_secd_newspapers_path(idencode(secd.id)), :class => "hvr-underline-from-left text-decoration-none dropdown-item" do 
                       -#
                         = image_tag 'frsticon/' + secd.svg + '.svg'
                         = image_tag secd.header_url
                       %p.text-dark.mt-2
                         = secd.name
-                  - elsif secd.articles.last.nil? 
-                    = link_to "javascript:void(0)", :class => "hvr-underline-from-left text-decoration-none dropdown-item"  do 
-                      -#
-                        = image_tag 'frsticon/' + secd.svg + '.svg'
-                        = image_tag secd.header_url
-                      %p.text-dark.mt-2
-                        = secd.name
-                  - else
-                    = link_to info_secd_newspaper_path(idencode(secd.id), idencode(secd.articles.last.id)), :class => "hvr-underline-from-left text-decoration-none dropdown-item"  do 
-                      -#
-                        = image_tag 'frsticon/' + secd.svg + '.svg'
-                        = image_tag secd.header_url
+                  - elsif secd.showstyle == Setting.secds.sshow
+                    - if secd.articles.last.nil? 
+                      = link_to "javascript:void(0)", :class => "hvr-underline-from-left text-decoration-none dropdown-item"  do 
+                        %p.text-dark.mt-2
+                          = secd.name
+                    - else
+                      = link_to info_secd_newspaper_path(idencode(secd.id), idencode(secd.articles.last.id)), :class => "hvr-underline-from-left text-decoration-none dropdown-item"  do 
+                        %p.text-dark.mt-2
+                          = secd.name
+                  - elsif secd.showstyle == Setting.secds.slink
+                    = link_to secd.link, :class => "hvr-underline-from-left text-decoration-none dropdown-item", :target => '_blank'   do 
                       %p.text-dark.mt-2
                         = secd.name
         - if @engine.consult

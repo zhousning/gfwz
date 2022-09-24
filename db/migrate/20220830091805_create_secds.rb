@@ -11,8 +11,11 @@ class CreateSecds < ActiveRecord::Migration
       t.boolean :show_page,  null: false, default: Setting.systems.default_boolean
     
 
+      t.string :showstyle,  null: false, default: Setting.secds.sindex
     
       t.string :sidebar,  null: false, default: Setting.systems.default_str
+
+      t.string :link,  null: false, default: Setting.systems.default_str
     
       t.string :header,  null: false, default: Setting.systems.default_str
     

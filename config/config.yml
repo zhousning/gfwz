@@ -426,6 +426,11 @@ defaults:
     sequence: 排序
     index_page: 列表页显示
     show_page: 详情页显示
+    showstyle: 展现方式
+    link: 超链接
+    sindex: 列表
+    sshow: 详情
+    slink: 超链接
   articles: &44
     label: 文章
     title: 标题
