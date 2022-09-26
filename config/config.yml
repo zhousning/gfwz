@@ -1,9 +1,9 @@
 ---
-mysetting:
-  reports: &1
+mysetting: &mysetting
+  reports: 
     title: 标题
     content: 正文
-  models: &2
+  models: 
     label: ''
     name: 名称
     image: 图像
@@ -15,15 +15,15 @@ mysetting:
     js: js
     scss: 是否添加集团内容
     admin: 添加到后台
-  properties: &3
+  properties: 
     label: 嵌套显示的属性
     name: 属性名
     tag: 标签
-  relates: &4
+  relates: 
     label: ''
     type: 关联类型
     obj: 对象
-  templates: &5
+  templates: 
     label: 模板
     name: 英文名称
     cn_name: 中文名称
@@ -44,13 +44,13 @@ mysetting:
     upload: 上传解析表格
     admin: 添加到后台
     current_user: current_user
-  natures: &6
+  natures: 
     label: ''
     name: 英文属性名
     type: 类型
     title: 中文属性名
     tag: 标签
-  wx_templates: &7
+  wx_templates: 
     label: 模板
     name: 英文名称
     cn_name: 中文名称
@@ -70,7 +70,7 @@ mysetting:
     upload: 平分Tab
     admin: 图标Tab
     current_user: 时间轴
-  spiders: &8
+  spiders: 
     label: 爬虫
     link: 请求地址
     cookie: cookie
@@ -81,7 +81,7 @@ mysetting:
     referer: referer
     host: host
     redirection: redirection
-  selectors: &9
+  selectors: 
     label: 选择器
     name: 选择器名称
     category: 类型
@@ -99,13 +99,13 @@ mysetting:
       html:
         info: html
         value: '3'
-defaults:
-  admins: &10
+defaults: &defaults
+  admins: 
     class_name: all
     email: myzn@world.com
     phone: '18266795898'
     password: nongwutaizi918
-  users: &11
+  users: 
     class_name: User
     opening: 0
     pending: 1
@@ -124,7 +124,7 @@ defaults:
     status: 认证状态
     level: 等级
     inviter: 邀请者
-  roles: &12
+  roles: 
     label: 角色
     name: 名称
     class_name: Role
@@ -139,14 +139,14 @@ defaults:
     role_homeset: 版块配置
     role_spider: 爬虫配置
     role_wxtool: 公众号工具
-  permissions: &13
+  permissions: 
     super_admin: 管理系统所有资源
     label: 权限管理
     name: 名称
     subject_class: controller单数名称
     action: action
     description: 描述
-  systems: &14
+  systems: 
     poundage: 0.1
     commision: 0.1
     authc_pay: 1
@@ -186,7 +186,7 @@ defaults:
     man: 男
     woman_no: '1'
     woman: 女
-  states: &15
+  states: 
     opening: opening
     selecting: selecting
     selected: selected
@@ -201,7 +201,7 @@ defaults:
     passed: passed
     working: working
     processing: processing
-  trade_orders: &16
+  trade_orders: 
     number: 订单编号
     price: 价格
     state: 状态
@@ -221,7 +221,7 @@ defaults:
     completed_title: 已完成
     canceled: canceled
     canceled_title: 已取消
-  extract_cashes: &17
+  extract_cashes: 
     coin: 提取金额
     status: 状态
     pending: pending
@@ -230,7 +230,7 @@ defaults:
     agree_title: 同意
     disagree: disagree
     disagree_title: 不同意
-  file_libs: &18
+  file_libs: 
     label: 文件库
     name: 文件名
     path: 路径
@@ -242,40 +242,40 @@ defaults:
     ppt: '4'
     mp4: '5'
     txt: '6'
-  archives: &19
+  archives: 
     label: 档案库
     name: 名称
     desc: 备注
-  portfolios: &20
+  portfolios: 
     label: 文件夹
     name: 文件夹名
-  examines: &21
+  examines: 
     label: 考核资料自选库
     name: 名称
-  exm_items: &22
+  exm_items: 
     label: 一级目录
     name: 一级目录名
     hierarchy: 目录树
-  agendas: &23
+  agendas: 
     label: 日程
     title: 标题
     content: 事务内容
     worktime: 时间
-  statistics: &24
+  statistics: 
     label: 统计
     title: 标题
     xtitle: x轴标题
     ytitle: y轴标题
     legend: 图例
     data: 数据
-  companies: &25
+  companies: 
     label: 公司
     area: 地区
     name: 名称
     info: 简介
     lnt: 经度
     lat: 维度
-  factories: &26
+  factories: 
     label: 工厂
     area: 地区
     name: 名称
@@ -284,11 +284,11 @@ defaults:
     lnt: 经度
     lat: 维度
     plan: 计划
-  departments: &27
+  departments: 
     label: 部门
     name: 名称
     info: 简介
-  charts: &28
+  charts: 
     line: '0'
     bar: '1'
     gauge: '2'
@@ -301,7 +301,7 @@ defaults:
     table_t: table
     radar_t: radar
     scatter_3d_t: scatter_3d
-  months: &29
+  months: 
     one: '1'
     one_t: 一月
     two: '2'
@@ -326,7 +326,7 @@ defaults:
     eleven_t: 十一月
     twelve: '12'
     twelve_t: 十二月
-  accounts: &30
+  accounts: 
     coin: 金额
     password: 安全密码
     number: 卡号
@@ -337,7 +337,7 @@ defaults:
     award_invite_recharge: 40
     enable: enable
     disable: disable
-  devices: &31
+  devices: 
     label: 施工站点
     idno: 站点编号
     name: 站点名称
@@ -356,48 +356,48 @@ defaults:
     state_normal: 施工中
     state_repair: 已完工
     state_stop: 停工
-  upholds: &32
+  upholds: 
     label: 巡检记录
     uphold_date: 日期
     reason: 巡检原因
     content: 巡检内容
     cost: 费用
     state: 状态
-  patrolers: &33
+  patrolers: 
     label: 签到负责人
     name: 姓名
     phone: 电话
     password: 密码
-  tasks: &34
+  tasks: 
     label: 巡检任务
     task_date: 巡检日期
     des: 备注
-  task_reports: &35
+  task_reports: 
     label: 巡检报告
     longitude: 经度
     latitude: 维度
     state: 运行状态
     question: 问题
-  task_logs: &36
+  task_logs: 
     label: 巡检日志
     start_time: 开始时间
     end_time: 结束时间
     state: 状态
-  gdservices: &37
+  gdservices: 
     label: 北斗定位终端
     key: key
     name: name
     sid: sid
-  gdteminals: &38
+  gdteminals: 
     label: 北斗地图终端
     name: name
     tid: tid
     desc: desc
-  gdtraces: &39
+  gdtraces: 
     label: 北斗地图轨迹管理
     trid: trid
     trname: trname
-  workers: &40
+  workers: 
     label: 工人管理
     name: 姓名
     idno: 身份证
@@ -408,18 +408,18 @@ defaults:
     idfront: 身份证正面
     idback: 身份证反面
     avatar: 一寸照片
-  sign_logs: &41
+  sign_logs: 
     label: 签到记录
     sign_date: 签到日期
     wx_user_id: 签到审核人
     device_id: 站点
-  frsts: &42
+  frsts: 
     label: 导航类目
     name: 名称
     sequence: 排序
     index_page: 列表页显示
     show_page: 详情页显示
-  secds: &43
+  secds: 
     label: 二级类目
     name: 名称
     svg: svg图片
@@ -431,88 +431,38 @@ defaults:
     sindex: 列表
     sshow: 详情
     slink: 超链接
-  articles: &44
+  articles: 
     label: 文章
     title: 标题
     pdt_date: 发文日期
     content: 内容
-  carousels: &45
+  carousels: 
     label: 走马灯
     title: 标题
     sequence: 顺序
-  showrooms: &46
+  showrooms: 
     label: 企业展厅
     title: 标题
     sequence: 顺序
-  home_settings: &47
+  home_settings: 
     label: 首页版块设置
     diyi: 第一版块
     dangjian: 党建版块
     dier: 通知公告版块
     disan: 第三版块
-  wxtools: &48
+  wxtools: 
     label: 公众号工具
     name: 名称
     link: 链接地址
     secd_id: 二级类目
     desc: 备用
-  home_contents: &49
+  home_contents: 
     label: 首页内容
     dtevent: 灯塔头条
     dtlink: 灯塔头条链接
     video_title: 视频标题
     desc1: 备用1
     desc2: 备用2
-development:
-  reports: *1
-  models: *2
-  properties: *3
-  relates: *4
-  templates: *5
-  natures: *6
-  wx_templates: *7
-  spiders: *8
-  selectors: *9
-  admins: *10
-  users: *11
-  roles: *12
-  permissions: *13
-  systems: *14
-  states: *15
-  trade_orders: *16
-  extract_cashes: *17
-  file_libs: *18
-  archives: *19
-  portfolios: *20
-  examines: *21
-  exm_items: *22
-  agendas: *23
-  statistics: *24
-  companies: *25
-  factories: *26
-  departments: *27
-  charts: *28
-  months: *29
-  accounts: *30
-  devices: *31
-  upholds: *32
-  patrolers: *33
-  tasks: *34
-  task_reports: *35
-  task_logs: *36
-  gdservices: *37
-  gdteminals: *38
-  gdtraces: *39
-  workers: *40
-  sign_logs: *41
-  frsts: *42
-  secds: *43
-  articles: *44
-  carousels: *45
-  showrooms: *46
-  home_settings: *47
-  wxtools: *48
-  home_contents: *49
   shutters:
     label: 小轮播
     title: 标题
@@ -555,54 +505,10 @@ development:
     des1: 备用1
     des2: 备用2
     des3: 备用3
+development:
+  <<: *mysetting
+  <<: *defaults
 test: 
 production:
-  reports: *1
-  models: *2
-  properties: *3
-  relates: *4
-  templates: *5
-  natures: *6
-  wx_templates: *7
-  spiders: *8
-  selectors: *9
-  admins: *10
-  users: *11
-  roles: *12
-  permissions: *13
-  systems: *14
-  states: *15
-  trade_orders: *16
-  extract_cashes: *17
-  file_libs: *18
-  archives: *19
-  portfolios: *20
-  examines: *21
-  exm_items: *22
-  agendas: *23
-  statistics: *24
-  companies: *25
-  factories: *26
-  departments: *27
-  charts: *28
-  months: *29
-  accounts: *30
-  devices: *31
-  upholds: *32
-  patrolers: *33
-  tasks: *34
-  task_reports: *35
-  task_logs: *36
-  gdservices: *37
-  gdteminals: *38
-  gdtraces: *39
-  workers: *40
-  sign_logs: *41
-  frsts: *42
-  secds: *43
-  articles: *44
-  carousels: *45
-  showrooms: *46
-  home_settings: *47
-  wxtools: *48
-  home_contents: *49
+  <<: *mysetting
+  <<: *defaults
