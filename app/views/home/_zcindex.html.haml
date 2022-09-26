@@ -60,7 +60,7 @@
       .col-12.d-flex.justify-content-between.align-items-center
         - @matters.each do |matter|
           .rounded{:style => "background: ##{matter.background}"}
-            %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => matter.link}
+            %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => matter.link, :target => '_blank'}
               %i.fa.fa-2x.mr-3{:class => "fa-#{matter.icon}"}
               = matter.title
         .rounded.bg-648e50
@@ -107,7 +107,7 @@
                           = link_to  info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body" do
                             %h5.mb-1.zchome-item-title
                               = truncate(article[:title], :length => 23)
-                        .text-secondary.article-content-title
+                        .text-secondary
                           = truncate(article[:content], :length => 60)
                   %li.list-group-item.px-0.border-0.text-right
                     = link_to '更多>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'zchome-item-title'

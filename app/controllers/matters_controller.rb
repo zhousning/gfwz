@@ -44,7 +44,7 @@ class MattersController < ApplicationController
     @matter = Matter.find(iddecode(params[:id]))
    
     if @matter.update(matter_params)
-      redirect_to matter_path(idencode(@matter.id)) 
+      redirect_to edit_matter_path(idencode(@matter.id)) 
     else
       render :edit
     end
